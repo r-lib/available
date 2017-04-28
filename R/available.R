@@ -2,6 +2,7 @@
 #'
 #' @param name Name of package to search
 #' @param ... Additional arguments passed to [utils::available.packages()].
+#' @export
 available <- function(name, ...) {
   cran_names <- rownames(available_packages(...))
 
