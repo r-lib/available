@@ -2,6 +2,7 @@
 #'
 #' @param name name of package
 #' @param pkgs packages to compare with
+#' @importFrom stringdist stringdist
 #'
 pkg_name_dist <- function(name, pkgs) {
   distances <- stringdist::stringdist(name, pkgs)
