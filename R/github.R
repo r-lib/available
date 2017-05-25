@@ -6,7 +6,7 @@
 available_github <- function(name) {
   github_names <- github_packages()
 
-  same <- tolower(name) == tolower(github_names)
+  same <- tolower(name) == tolower(github_names[["pkg_name"]])
   if (any(same)) {
     return(
       structure(
@@ -32,11 +32,11 @@ github_packages <- memoise::memoise(function() {
   github_db <- jsonlite::read_json(github_db_url)[[1]]
 
   # parse package names from JSON
-  github_names <- vapply(github_db, function(x) {
-    x[["pkg_name"]]
-  }, character(1))
+  github_names <- dplyr::bind_rows(github_db)
 
   # remove github username
-  stringr::str_extract(github_names, "([^/]+$)")
+  github_names[["pkg_name"]] <- stringr::str_extract(github_names[["pkg_name"]], "([^/]+$)")
+
+  github_names
 
 })
