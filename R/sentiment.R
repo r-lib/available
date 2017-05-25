@@ -16,8 +16,8 @@ print.available_sentiment <- function(x) {
     if (is.na(x[[1]])) {
       "???"
     } else if (isTRUE(x[[1]])) {
-      crayon::green("\u2795")
+      crayon::green("+++")
     } else{
-      crayon::red("\u2796")
+      crayon::red("---")
     }, "\n")
 }
