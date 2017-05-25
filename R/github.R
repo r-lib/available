@@ -1,6 +1,7 @@
 #' See if a name is available on github
 #'
 #' @param name Name of package to search
+#' @importFrom jsonlite fromJSON
 #' @export
 available_github <- function(name) {
   github_names <- github_packages()
@@ -26,7 +27,7 @@ github.packages <- function() {
   github_db <- jsonlite::read_json(github_db_url)[[1]]
 
   # parse package names from JSON
-  github_names <- vapply(db[[1]], function(x) {
+  github_names <- vapply(github_db[[1]], function(x) {
     x[["pkg_name"]]
   }, character(1))
 
