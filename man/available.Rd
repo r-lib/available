@@ -12,5 +12,8 @@ available(name, ...)
 \item{...}{Additional arguments passed to [utils::available.packages()].}
 }
 \description{
-See if a name is available
+Searches performed
+- Valid package name
+- Already taken on CRAN
+- Positive or negative sentiment
 }
