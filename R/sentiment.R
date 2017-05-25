@@ -8,9 +8,9 @@ get_sentiment <- function(name) {
     name_sentiment = sents[sents$word == name, "sentiment"]
 
     if (nrow(name_sentiment) > 0) {
-      return(name_sentiment[[1]])
+      name_sentiment[[1]]
     } else {
-      return(NULL)
+      NULL
     }
 }
     
