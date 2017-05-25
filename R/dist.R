@@ -6,11 +6,20 @@
 #' @importFrom utils head
 #'
 pkg_name_dist <- function(name, pkgs) {
-  distances <- stringdist::stringdist(name, pkgs)
+  if (is.data.frame(pkgs)) {
+    distances <- stringdist::stringdist(name, pkgs[["pkg_name"]])
 
-  tibble::tibble(
-    pkgs = utils::head(pkgs[order(distances)]),
-    distance = utils::head(distances[order(distances)])
-  )
+    cbind(
+      utils::head(pkgs[order(distances), ]),
+      distance = utils::head(distances[order(distances)])
+    )
+  } else {
+    distances <- stringdist::stringdist(name, pkgs)
+
+    tibble::tibble(
+      pkgs = utils::head(pkgs[order(distances)]),
+      distance = utils::head(distances[order(distances)])
+    )
+  }
 
 }
