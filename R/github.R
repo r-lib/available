@@ -8,11 +8,16 @@ available_github <- function(name) {
 
   same <- tolower(name) == tolower(github_names)
   if (any(same)) {
-    stop(sprintf(
-      "`%s` conflicts with %s",
-      name,
-      paste0("`", github_names[same], "`", collapse = ", ")
-    ), call. = FALSE)
+    return(
+      structure(
+        list(
+          source = "github",
+          available = FALSE,
+          close = list(pkg_name_dist(name, github_names))
+        ),
+        class = "available_github"
+      )
+    )
   }
 
   message(sprintf("`%s` is available!", name))
