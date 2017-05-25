@@ -4,8 +4,8 @@
 
 yes_no <- function(x) {
   if (isTRUE(x)) {
-    crayon::green("Yes")
+    crayon::green("\u2713")
   } else {
-    crayon::red("No")
+    crayon::red("X")
   }
 }

@@ -13,6 +13,7 @@ available <- function(name, ...) {
     valid_package_name(name),
     available_on_cran(name, ...),
     available_on_bioc(name, ...),
+    available_on_github(name),
     sentiment(name)),
     class = "available_query")
 }

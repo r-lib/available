@@ -3,7 +3,7 @@
 #' @param name Name of package to search
 #' @importFrom jsonlite fromJSON
 #' @export
-available_github <- function(name) {
+available_on_github <- function(name) {
   github_names <- github_packages()
 
   same <- tolower(name) == tolower(github_names[["pkg_name"]])
@@ -11,7 +11,6 @@ available_github <- function(name) {
     return(
       structure(
         list(
-          source = "github",
           available = FALSE,
           close = list(pkg_name_dist(name, github_names))
         ),
@@ -19,9 +18,11 @@ available_github <- function(name) {
       )
     )
   }
-
-  message(sprintf("`%s` is available!", name))
-  invisible(TRUE)
+  structure(
+    list(
+      available = TRUE,
+      close = list()),
+    class = "available_github")
 }
 
 github_packages <- memoise::memoise(function() {
@@ -40,3 +41,7 @@ github_packages <- memoise::memoise(function() {
   github_names
 
 })
+
+print.available_github <- function(x) {
+  cat(crayon::bold("Available on GitHub:", yes_no(x[[1]]), "\n"))
+}
