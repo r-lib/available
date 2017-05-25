@@ -2,3 +2,4 @@
 
 export(available)
 export(available_on_cran)
+export(valid_package_name)
