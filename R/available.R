@@ -8,8 +8,17 @@
 #' @param ... Additional arguments passed to [utils::available.packages()].
 #' @export
 available <- function(name, ...) {
-  c(
+  structure(list(
     valid_package_name(name),
     available_on_cran(name, ...),
-    get_sentiment(name))
+    available_on_bioc(name, ...),
+    sentiment(name)),
+    class = "available_query")
+}
+
+print.available_query <- function(x) {
+  for (i in x) {
+    print(i)
+  }
+  invisible(x)
 }
