@@ -9,13 +9,31 @@ available <- function(name, ...) {
 
   same <- tolower(name) == tolower(cran_names)
   if (any(same)) {
-    stop(sprintf("`%s` conflicts with %s", name, paste0("`", cran_names[same], "`", collapse = ", ")), call. = FALSE)
+    return(
+      structure(
+        list(
+          source = "CRAN",
+          available = FALSE,
+          close = list(pkg_name_dist(name, cran_names))
+        ),
+        class = "available_cran"
+      )
+    )
   }
 
   archived_names <- names(archive_packages())
   same <- tolower(name) == tolower(archived_names)
   if (any(same)) {
-    stop(sprintf("`%s` conflicts with %s", name, paste0("`", archived_names[same], "`", collapse = ", ")), call. = FALSE)
+    return(
+      structure(
+        list(
+          source = "CRAN archive",
+          available = FALSE,
+          close = list(pkg_name_dist(name, archived_names))
+        ),
+        class = "available_cran_archive"
+      )
+    )
   }
 
   message(sprintf("`%s` is available!", name))
