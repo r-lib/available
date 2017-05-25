@@ -6,6 +6,7 @@
 #' - Positive or negative sentiment
 #' @param name Name of package to search
 #' @param ... Additional arguments passed to [utils::available.packages()].
+#' @importFrom memoise memoise
 #' @export
 available <- function(name, ...) {
   structure(list(
