@@ -1,4 +1,5 @@
 #' Is a package name valid
+#' @inheritParams available
 #' @export
 valid_package_name <- function(name) {
 

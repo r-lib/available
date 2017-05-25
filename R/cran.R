@@ -2,6 +2,7 @@
 #'
 #' @param name Name of package to search
 #' @param ... Additional arguments passed to [utils::available.packages()].
+#' @inheritParams utils::available.packages
 #' @export
 available_on_cran <- function(name,
   repos = c(CRAN = "https://cloud.r-project.org",

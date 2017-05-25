@@ -13,6 +13,10 @@ available_on_cran(name, repos = c(CRAN = "https://cloud.r-project.org",
 \arguments{
 \item{name}{Name of package to search}
 
+\item{repos}{
+    character vector, the base URL(s) of the repositories to use.
+  }
+
 \item{...}{Additional arguments passed to [utils::available.packages()].}
 }
 \description{

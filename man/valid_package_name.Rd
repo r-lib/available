@@ -6,6 +6,9 @@
 \usage{
 valid_package_name(name)
 }
+\arguments{
+\item{name}{Name of package to search}
+}
 \description{
 Is a package name valid
 }

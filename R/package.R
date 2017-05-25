@@ -1,0 +1,2 @@
+#' @importFrom utils browseURL
+NULL
