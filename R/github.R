@@ -19,7 +19,7 @@ available_github <- function(name) {
   invisible(TRUE)
 }
 
-github.packages <- function() {
+github_packages <- memoise::memoise(function() {
   # url of github R packages JSON
   github_db_url <- "http://rpkg.gepuro.net/download"
 
@@ -34,6 +34,4 @@ github.packages <- function() {
   # remove github username
   stringr::str_extract(github_names, "([^/]+$)")
 
-}
-
-github_packages <- memoise::memoise(github.packages)
+})
