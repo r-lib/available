@@ -1,7 +1,7 @@
 context("Load packages from github")
 
 test_that("Can find dplyr", {
-  expect_error(available_github("dplyr"))
+  expect_true(length(available_github("dplyr"))>0)
 })
 
 test_that("Can't find made up package", {
