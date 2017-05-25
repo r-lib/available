@@ -20,3 +20,7 @@ archive_packages <- memoise::memoise(function() {
 })
 
 available_packages <- memoise::memoise(available.packages)
+
+print.available_cran <- function(x) {
+  cat("CRAN:", yes_no(x[[1]]))
+}
