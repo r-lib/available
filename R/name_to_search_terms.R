@@ -1,5 +1,5 @@
 # Function that takes a name and generates search terms based on it
-nameToSearchTerms <- function(name){
+name_to_search_terms <- function(name){
   # generate test strings by splitting on & removing periods & digits
   output <- strsplit(x = name, split = "[[:digit:][:punct:]]")
   
