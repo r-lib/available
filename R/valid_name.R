@@ -16,7 +16,7 @@ valid_package_name <- function(name) {
 }
 
 print.available_valid_name <- function(x) {
-  cat(crayon::bold("Valid:"), yes_no(x[[1]]), "\n")
+  cat(crayon::bold("Name valid:"), yes_no(x[[1]]), "\n")
 }
 
 valid_package_name_regexp <-
