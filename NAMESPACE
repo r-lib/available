@@ -2,3 +2,4 @@
 
 export(available)
 export(available_github)
+importFrom(jsonlite,fromJSON)
