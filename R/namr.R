@@ -117,8 +117,12 @@ make_spelling_rlike <- function(word){
 # make_spelling_rlike("instr") # should return rinstr
 
 
-# function to add common, informative suffixes
+# function to add common, informative suffixes (but only up to one)
 common_suffixes <- function(title, name){
+  # add "tidy" to beginning of package name if it occurs in the title
+  if(grepl("\\<tidy",title, ignore.case = T)){
+    return(paste(c("tidy",name), collapse = ""))
+  }
   # add "plot", "viz" or "vis" to the end of the package name if that appears in the title
   if(grepl("\\<viz",title, ignore.case = T)){
     return(paste(c(name, "viz"), collapse = ""))
