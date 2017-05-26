@@ -23,16 +23,21 @@ get_bad_words <- function(name) {
 }
 
 print.available_bad_words <- function(x) {
+  good <- crayon::green
+  bad <- crayon::combine_styles(crayon::bgRed, crayon::white)
   cat(crayon::bold("Bad Words: "),
     if (length(x) == 0) {
-      crayon::green(clisymbols::symbol$tick)
+      good(clisymbols::symbol$tick)
     } else {
-      crayon::bgRed(glue::collapse(x, sep = ", ", last = " and "))
+      bad(glue::collapse(x, sep = ", ", last = " and "))
     }, "\n", sep = "")
 }
 
-mark_bad_words <- function(
-  text, marker = crayon::make_style("red", bg = TRUE)) {
+mark_bad_words <- function(text, marker = NULL) {
+
+  if (is.null(marker)) {
+    marker <- crayon::combine_styles(crayon::white, crayon::bgRed)
+  }
 
   vapply(
     tolower(text),
