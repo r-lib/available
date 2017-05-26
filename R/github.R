@@ -35,6 +35,15 @@ gh_pkgs <- memoise::memoise(function() {
   res[!(res$pkg_org == "cran" | res$pkg_org == "Bioconductor-mirror"), ]
 })
 
-print.available_github <- function(x) {
-  cat(crayon::bold("Available on GitHub:", yes_no(x[[1]]), "\n"))
+#' @export
+
+format.available_github <- function(x, ...) {
+  paste0(crayon::bold("Available on GitHub: ", yes_no(x[[1]]), "\n"))
+}
+
+#' @export
+
+print.available_github <- function(x, ...) {
+  cat(format(x, ...))
+  invisible(x)
 }
