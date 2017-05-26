@@ -24,7 +24,8 @@ Imports: jsonlite,
   stringr,
   clisymbols,
   glue,
-  desc
+  desc,
+  yesno
 Suggests:
   testthat,
   BiocInstaller,

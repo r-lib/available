@@ -56,7 +56,7 @@ create <- function(name, ...) {
 #' @export
 suggest <- function(path = ".", title = NULL) {
   if (is.null(title)) {
-    title <- desc::desc(pkg)$get("Title")
+    title <- desc::desc(path)$get("Title")
     if (is.na(title)) {
       stop("No title found, please specify one with `title`.", call. = FALSE)
     }
