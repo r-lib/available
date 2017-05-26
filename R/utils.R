@@ -4,8 +4,8 @@
 
 yes_no <- function(x) {
   if (isTRUE(x)) {
-    crayon::green("\u2713")
+    crayon::green(clisymbols::tick)
   } else {
-    crayon::red("X")
+    crayon::red(clisymbols::cross)
   }
 }
