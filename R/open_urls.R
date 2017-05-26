@@ -25,7 +25,7 @@ get_wiktionary <- function(name) {
 
 print.available_wiktionary <- function(x) {
   browseURL(x[[1]])
-  cat(crayon::bold("Wikipedia: "), x[[1L]], "\n", sep = "")
+  cat(crayon::bold("Wiktionary: "), x[[1L]], "\n", sep = "")
 
   invisible(x)
 }
