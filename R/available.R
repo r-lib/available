@@ -4,6 +4,7 @@
 #' - Valid package name
 #' - Already taken on CRAN
 #' - Positive or negative sentiment
+#' - Urban Dictionary
 #' @param name Name of package to search
 #' @param ... Additional arguments passed to [utils::available.packages()].
 #' @importFrom memoise memoise
@@ -14,6 +15,7 @@ available <- function(name, ...) {
     available_on_cran(name, ...),
     available_on_bioc(name, ...),
     available_on_github(name),
+    get_urban_data(name),
     sentiment(name)),
     class = "available_query")
 }
