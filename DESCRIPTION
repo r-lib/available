@@ -22,5 +22,6 @@ Imports: jsonlite,
   udapi,
   purrr,
   stringr,
-  clisymbols
+  clisymbols,
+  glue
 Suggests: testthat, BiocInstaller
