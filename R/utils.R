@@ -9,3 +9,7 @@ yes_no <- function(x) {
     crayon::red(clisymbols::symbol$cross)
   }
 }
+
+fix_windows_nl <- function(x) {
+  gsub("\r\n", "\n", x)
+}
