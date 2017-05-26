@@ -5,7 +5,7 @@ bad_words <- memoise::memoise(function() {
   # remove non-alphanumerics
   words <- gsub("[^[:alnum:]]", "", words)
   # remove blank and short strings
-  words <- words[nchar(words)>2]
+  words <- words[nchar(words) > 2]
 
   words
 
@@ -26,10 +26,10 @@ get_bad_words <- function(name) {
 }
 
 print.available_bad_words <- function(x) {
-cat(crayon::bold("Bad Words: "),
-  if (length(x) == 0) {
-    crayon::green(clisymbols::symbol$tick)
-  } else {
-    crayon::red(glue::collapse(x))
-  }, "\n", sep = "")
+  cat(crayon::bold("Bad Words: "),
+    if (length(x) == 0) {
+      crayon::green(clisymbols::symbol$tick)
+    } else {
+      crayon::red(glue::collapse(x))
+    }, "\n", sep = "")
 }
