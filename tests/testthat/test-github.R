@@ -5,5 +5,5 @@ test_that("Can find dplyr", {
 })
 
 test_that("Can't find made up package", {
-  expect_true(available_on_github("This_is_not_a_pkg"))
+  expect_true(available_on_github("This_is_not_a_pkg")[[1]])
 })
