@@ -120,13 +120,13 @@ make_spelling_rlike <- function(word){
 # function to add common, informative suffixes
 common_suffixes <- function(title, name){
   # add "plot", "viz" or "vis" to the end of the package name if that appears in the title
-  if(grepl(" viz*",title, ignore.case = T)){
+  if(grepl("\\<viz",title, ignore.case = T)){
     return(paste(c(name, "viz"), collapse = ""))
   }
-  if(grepl(" vis*",title, ignore.case = T)){
+  if(grepl("\\<vis",title, ignore.case = T)){
     return(paste(c(name, "vis"), collapse = ""))
   }
-  if(grepl("plot*",title, ignore.case = T)){
+  if(grepl("\\<plot",title, ignore.case = T)){
     return(paste(c(name, "plot"), collapse = ""))
   }
   return(name)
