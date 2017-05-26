@@ -4,10 +4,7 @@
 #' @param ... Additional arguments passed to [utils::available.packages()].
 #' @inheritParams utils::available.packages
 #' @export
-available_on_cran <- function(name,
-  repos = c(CRAN = "https://cloud.r-project.org",
-    CRANextra = "http://www.stats.ox.ac.uk/pub/RWin"),
-  ...) {
+available_on_cran <- function(name, repos = default_cran_repos, ...) {
   cran_names <- rownames(available_packages(repos = repos, ...))
   archive_names <- names(archive_packages())
 
@@ -28,3 +25,7 @@ available_packages <- memoise::memoise(available.packages)
 print.available_cran <- function(x) {
   cat(crayon::bold("Available on CRAN:"), yes_no(x[[1]]), "\n")
 }
+
+default_cran_repos <-c(
+  CRAN = "https://cloud.r-project.org",
+  CRANextra = "http://www.stats.ox.ac.uk/pub/RWin")
