@@ -29,3 +29,17 @@ print.available_wiktionary <- function(x) {
 
   invisible(x)
 }
+
+get_abbreviation <- function(name) {
+  # TODO: handle case when we can't open browser
+  url <- paste0("http://www.abbreviations.com/", name)
+
+  structure(url, class = "available_abbreviation")
+}
+
+print.available_abbreviation <- function(x) {
+  browseURL(x[[1]])
+  cat(crayon::bold("Abbreviations: "), x[[1L]], "\n", sep = "")
+
+  invisible(x)
+}
