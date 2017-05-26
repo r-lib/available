@@ -10,22 +10,24 @@
 #' @importFrom memoise memoise
 #' @export
 available <- function(name, ...) {
+  res <- list(valid_package_name(name),
+    available_on_cran(name, ...),
+    available_on_bioc(name, ...),
+    available_on_github(name))
   terms <- name_to_search_terms(name)
-  if (length(terms) > 1) {
-    return(lapply(terms, Recall))
-  }
-  structure(list(
-    valid_package_terms(terms),
-    available_on_cran(terms, ...),
-    available_on_bioc(terms, ...),
-    available_on_github(terms),
-    get_bad_words(terms),
-    get_abbreviation(terms),
-    get_wikipidia(terms),
-    get_wiktionary(terms),
-    get_urban_data(terms),
-    sentiment(terms)),
-    class = "available_query")
+  res <- c(res,
+    unlist(recursive = FALSE,
+      lapply(terms,
+      function(term) {
+        list(
+          get_bad_words(term),
+          get_abbreviation(term),
+          get_wikipidia(term),
+          get_wiktionary(term),
+          get_urban_data(term),
+          sentiment(term))
+          })))
+    structure(res, class = "available_query")
 }
 
 print.available_query <- function(x) {
