@@ -16,6 +16,7 @@ available <- function(name, ...) {
     available_on_bioc(name, ...),
     available_on_github(name),
     get_bad_words(name_to_search_terms(name)),
+    get_abbreviation(name),
     get_wikipidia(name),
     get_wiktionary(name),
     get_urban_data(name),
