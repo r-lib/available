@@ -3,50 +3,34 @@
 # This is a set of functions to generate a package name, given the title of the package
 
 # This function picks a single word from the title
-pick_word_from_title <- function(title, remove_punct = T){
+pick_word_from_title <- function(title) {
   # to lower case
   title <- tolower(title)
 
   # convert to vector of words
-  word_vector <- unlist(strsplit(title, " "))
-
-  # remove punctuation if asked for by user
-  if(remove_punct){
-    word_vector <- gsub("[[:punct:]]", "", word_vector)
+  word_vector <- unlist(strsplit(title, "[[:space:]]+"))
+  if (length(word_vector) == 0) {
+    return(character())
   }
 
-  # if, at any point, we get down to just one word, stop & use that one
-  # remove English stopwords
-  if(length(word_vector) >  1){
-    word_vector <- word_vector[!word_vector %in% tidytext::stop_words$word]
-    word_vector <- stats::na.omit(word_vector)
-  }
+  R_stop_words <- c("libr", "analys", "class", "method",
+    "object", "model", "import", "data", "function", "format", "plug-in",
+    "plugin", "API", "client", "access", "interfac", "tool", "comput", "help",
+    "calcul", "tool", "read", "stat", "math", "numer", "file", "plot",
+    "wrap", "read", "writ", "pack", "dist", "algo", "code", "frame", "viz",
+    "vis")
 
-  # remove R-specific stopwords, things that are commonly in package titles but
-  # aren't helpful for telling you what the package is about
-  R_stop_words <- c("libr*", "analys*", "class*", "method*",
-                    "object*", "model*", "import*", "data*", "function*", "format*", "plug-in",
-                    "plugin", "API", "client*", "access*", "interfac*", "tool*", "comput*", "help*",
-                    "calcul*", "tool*", "read*", "stat*", "math*", "numer*", "file*", "plot*",
-                    "wrap*", "read*", "writ*", "pack*", "dist*", "algo*", "code*", "frame*", "viz*",
-                    "vis*", "monte", "carlo", "module*", "*data")
+  english_stop_words <- tidytext::stop_words$word
 
-  # check each possible word against our stop terms
-  R_stop_check <- apply(as.matrix(word_vector), 1, function(x){vapply(R_stop_words, grepl, logical(1), x = x)})
-  word_vector <- word_vector[colMeans(R_stop_check) == 0]
-  word_vector <- stats::na.omit(word_vector)
+  word_vector <- word_vector[!word_vector %in% c(english_stop_words)]
 
-  # remove very long words (> 15 charactesr)
-  if(length(word_vector) > 1){
-    word_vector <- word_vector[nchar(word_vector) < 15]
-    word_vector <- stats::na.omit(word_vector)
-  }
+  word_vector <- word_vector[!grepl(glue::collapse(R_stop_words, "|"), word_vector)]
 
+  # remove very long words (> 15 characters)
   # remove very short words (< 5 characters)
-  if(length(word_vector) > 1){
-    word_vector <- word_vector[nchar(word_vector) > 5]
-    word_vector <- stats::na.omit(word_vector)
-  }
+  word_vector <- word_vector[nchar(word_vector) < 15 | nchar(word_vector) > 5]
+
+  package_name <- character()
 
   # pick the longest edge word picking the longest one (< 15 characters)
   if(length(word_vector) > 1){
@@ -64,12 +48,14 @@ pick_word_from_title <- function(title, remove_punct = T){
     package_name <- word_vector[1]
   }
 
-  if(exists("package_name")){
-    # return out single word
-    return(package_name)
-  }else{
+  # remove punctuation
+  package_name <- gsub("[[:punct:]]", "", package_name)
+
+  if(length(package_name) == 0) {
     stop("Sorry, we couldn't make a good name from your tile.")
   }
+
+  package_name
 }
 
 # # test: should return "intro.js" & "introjs"
