@@ -11,7 +11,7 @@ get_wikipidia <- function(name) {
 
 print.available_wikipedia <- function(x) {
   browseURL(x[[1]])
-  cat(crayon::bold("Wikipedia: "), x[[1L]], "\n", sep = "")
+  cat(crayon::bold("Wikipedia: "), crayon::blue(x[[1L]]), "\n", sep = "")
 
   invisible(x)
 }
