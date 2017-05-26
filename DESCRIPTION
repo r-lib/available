@@ -25,8 +25,10 @@ Imports: jsonlite,
   clisymbols,
   glue,
   desc,
-  yesno
+  yesno,
+  SnowballC
 Suggests:
   testthat,
   BiocInstaller,
   devtools
+Suggests: testthat, BiocInstaller
