@@ -29,6 +29,6 @@ print.available_bad_words <- function(x) {
     if (length(x) == 0) {
       crayon::green(clisymbols::symbol$tick)
     } else {
-      crayon::red(glue::collapse(x))
+      crayon::red(glue::collapse(x, sep = ", ", last = " and "))
     }, "\n", sep = "")
 }
