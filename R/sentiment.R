@@ -11,13 +11,25 @@ sentiment <- function(name) {
   structure(res == "positive", class = "available_sentiment")
 }
 
-print.available_sentiment <- function(x) {
-  cat(crayon::bold("Sentiment:"),
+#' @export
+
+format.available_sentiment <- function(x, ...) {
+  paste0(
+    crayon::bold("Sentiment:"),
     if (is.na(x[[1]])) {
       "???"
     } else if (isTRUE(x[[1]])) {
       crayon::green("+++")
     } else{
       crayon::red("---")
-    }, "\n")
+    },
+    "\n"
+  )
+}
+
+#' @export
+
+print.available_sentiment <- function(x, ...) {
+  cat(format(x, ...))
+  invisible(x)
 }

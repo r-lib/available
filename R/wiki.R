@@ -9,10 +9,17 @@ get_wikipidia <- function(name) {
   structure(url, class = "available_wikipedia")
 }
 
-print.available_wikipedia <- function(x) {
-  browseURL(x[[1]])
-  cat(crayon::bold("Wikipedia: "), crayon::blue(x[[1L]]), "\n", sep = "")
+#' @export
 
+format.available_wikipedia <- function(x, ...) {
+  browseURL(x[[1]])
+  paste0(crayon::bold("Wikipedia: "), crayon::blue(x[[1L]]), "\n")
+}
+
+#' @export
+
+print.available_wikipedia <- function(x, ...) {
+  cat(format(x, ...))
   invisible(x)
 }
 
@@ -25,10 +32,17 @@ get_wiktionary <- function(name) {
   structure(url, class = "available_wiktionary")
 }
 
-print.available_wiktionary <- function(x) {
-  browseURL(x[[1]])
-  cat(crayon::bold("Wiktionary: "), crayon::blue(x[[1L]]), "\n", sep = "")
+#' @export
 
+format.available_wiktionary <- function(x) {
+  browseURL(x[[1]])
+  paste0(crayon::bold("Wiktionary: "), crayon::blue(x[[1L]]), "\n")
+}
+
+#' @export
+
+print.available_wiktionary <- function(x, ...) {
+  cat(format(x))
   invisible(x)
 }
 

@@ -22,8 +22,17 @@ archive_packages <- memoise::memoise(function() {
 
 available_packages <- memoise::memoise(available.packages)
 
-print.available_cran <- function(x) {
+#' @export
+
+format.available_cran <- function(x, ...) {
   cat(crayon::bold("Available on CRAN:"), yes_no(x[[1]]), "\n")
+}
+
+#' @export
+
+print.available_cran <- function(x, ...) {
+  cat(format(x, ...))
+  invisible(x)
 }
 
 default_cran_repos <-c(

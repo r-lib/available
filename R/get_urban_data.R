@@ -8,31 +8,43 @@ get_urban_data<- function(name) {
   structure(list(term, tags), class = "available_urban")
 }
 
-print.available_urban <- function(x, ...) {
-  cat(crayon::bold("Urban Dictionary:\n"))
+#' @export
+
+format.available_urban <- function(x, ...) {
+  res <- character()
+  out <- function(...) res <<- c(res, paste(...))
+
+  out(crayon::bold("Urban Dictionary:\n"))
 
   if (inherits(x[[1]], "error")) {
-    cat("  Not found.\n")
-    return(invisible(x))
+    out("  Not found.\n")
+    return(paste(res, collapse = ""))
   }
 
   ## Format first definition
   first <- fix_windows_nl(x[[1]]$definition[[1]])
   first <- strwrap(first, indent = 2, exdent = 2)
   first <- mark_bad_words(first)
-  cat(first, sep = "\n")
+  out(first, sep = "\n")
 
   ## Tags:
   if (! inherits(x[[2]], "error")) {
     tags <- paste(x[[2]], collapse = " ")
     tags <- strwrap(tags, exdent = 2, simplify = TRUE)
-    cat("\n  Tags: ", mark_bad_words(tags), sep = "")
-    cat("\n")
+    out("\n  Tags: ", mark_bad_words(tags), sep = "")
+    out("\n")
   }
 
   ## Link
-  cat("\n  ", crayon::blue(x[[1]]$permalink[1]), sep = "")
-  cat("\n")
+  out("\n  ", crayon::blue(x[[1]]$permalink[1]), sep = "")
+  out("\n")
 
+  paste(res, collapse = "")
+}
+
+#' @export
+
+print.available_urban <- function(x, ...) {
+  cat(format(x, ...))
   invisible(x)
 }

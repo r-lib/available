@@ -22,15 +22,27 @@ get_bad_words <- function(name) {
   structure(name[bad], class = "available_bad_words")
 }
 
-print.available_bad_words <- function(x) {
+#' @export
+
+format.available_bad_words <- function(x, ...) {
   good <- crayon::green
   bad <- crayon::combine_styles(crayon::bgRed, crayon::white)
-  cat(crayon::bold("Bad Words: "),
+  paste0(
+    crayon::bold("Bad Words: "),
     if (length(x) == 0) {
       good(clisymbols::symbol$tick)
     } else {
       bad(glue::collapse(x, sep = ", ", last = " and "))
-    }, "\n", sep = "")
+    },
+    "\n"
+  )
+}
+
+#' @export
+
+print.available_bad_words <- function(x, ...) {
+  cat(format(x, ...))
+  invisible(x)
 }
 
 mark_bad_words <- function(text, marker = NULL) {

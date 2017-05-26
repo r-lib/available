@@ -20,6 +20,15 @@ available_on_bioc <- function(name, repos = NULL, ...) {
   structure(!on_bioc, class = "available_bioc")
 }
 
-print.available_bioc <- function(x) {
-  cat(crayon::bold("Available on Bioconductor:"), yes_no(x[[1]]), "\n")
+#' @export
+
+format.available_bioc <- function(x, ...) {
+  paste0(crayon::bold("Available on Bioconductor: "), yes_no(x[[1]]), "\n")
+}
+
+#' @export
+
+print.available_bioc <- function(x, ...) {
+  cat(format(x, ...))
+  invisible(x)
 }

@@ -16,8 +16,17 @@ valid_package_name <- function(name) {
   structure(res, class = "available_valid_name")
 }
 
-print.available_valid_name <- function(x) {
-  cat(crayon::bold("Name valid:"), yes_no(x[[1]]), "\n")
+#' @export
+
+format.available_valid_name <- function(x, ...) {
+  paste0(crayon::bold("Name valid: "), yes_no(x[[1]]), "\n")
+}
+
+#' @export
+
+print.available_valid_name <- function(x, ...) {
+  cat(format(x, ...))
+  invisible(x)
 }
 
 valid_package_name_regexp <-
