@@ -27,12 +27,6 @@ Imports:
   tibble,
   tidytext,
   udapi,
-  purrr,
-  clisymbols,
-  glue,
-  desc,
-  yesno,
-  SnowballC,
   yesno
 Suggests:
   devtools,
