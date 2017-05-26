@@ -16,4 +16,5 @@ Searches performed
 - Valid package name
 - Already taken on CRAN
 - Positive or negative sentiment
+- Urban Dictionary
 }
