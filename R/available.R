@@ -10,17 +10,21 @@
 #' @importFrom memoise memoise
 #' @export
 available <- function(name, ...) {
+  terms <- name_to_search_terms(name)
+  if (length(terms) > 1) {
+    return(lapply(terms, Recall))
+  }
   structure(list(
-    valid_package_name(name),
-    available_on_cran(name, ...),
-    available_on_bioc(name, ...),
-    available_on_github(name),
-    get_bad_words(name_to_search_terms(name)),
-    get_abbreviation(name),
-    get_wikipidia(name),
-    get_wiktionary(name),
-    get_urban_data(name),
-    sentiment(name)),
+    valid_package_terms(terms),
+    available_on_cran(terms, ...),
+    available_on_bioc(terms, ...),
+    available_on_github(terms),
+    get_bad_words(terms),
+    get_abbreviation(terms),
+    get_wikipidia(terms),
+    get_wiktionary(terms),
+    get_urban_data(terms),
+    sentiment(terms)),
     class = "available_query")
 }
 
