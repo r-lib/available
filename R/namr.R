@@ -164,8 +164,8 @@ find_acronym <- function(title){
 }
 
 # funciton that strings functions together
-namr <- function(title, acronym = F){
-  name <- pick_word_from_title(title)
+namr <- function(title, acronym = F, verb = F, ...){
+  name <- pick_word_from_title(title, verb = verb, ...)
   name <- make_spelling_rlike(name)
   if(acronym){
     name <- paste(c(name, find_acronym(title)), collapse = "")
@@ -173,6 +173,7 @@ namr <- function(title, acronym = F){
   name <- common_suffixes(title, name)
   return(name)
 }
+
 
 # # some real  test examples
 # namr("A Package for Displaying Visual Scenes as They May Appear to an Animal with Lower Acuity")
