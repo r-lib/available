@@ -4,7 +4,7 @@
 
 # This function picks a single word from the title
 
-pick_word_from_title <- function(title) {
+pick_word_from_title <- function(title, verb = F) {
   # to lower case
   title <- tolower(title)
 
@@ -37,11 +37,18 @@ pick_word_from_title <- function(title) {
 
   package_name <- character()
 
-  # pick the longest edge word picking the longest one (< 15 characters)
+  # pick the first verb (if the user has requested a verb) or the longest edge word (< 15 characters)
   if(length(word_vector) > 1){
+    # get the part of speech for every word left in our vector
+    POS <- apply(as.matrix(word_vector), 1,
+           function(x){tidytext::parts_of_speech$pos[tidytext::parts_of_speech$word == x][1]})
     first <- word_vector[1]
     last <- word_vector[length(word_vector)]
-    if(nchar(last) > nchar(first)){
+    #print(POS)
+    if(sum(grepl("Verb", POS)) > 0 && verb){
+      package_name <- word_vector[grepl("Verb", POS)][1]
+      #print(word_vector[POS == "Verb"][1])
+    }else if(nchar(last) > nchar(first)){
       package_name <- last
     }else{
       package_name <- first
