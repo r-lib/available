@@ -12,11 +12,11 @@
 available <- function(name, ...) {
   structure(list(
     valid_package_name(name),
-    get_wikipidia(name),
-    get_wiktionary(name),
     available_on_cran(name, ...),
     available_on_bioc(name, ...),
     available_on_github(name),
+    get_wikipidia(name),
+    get_wiktionary(name),
     get_urban_data(name),
     sentiment(name)),
     class = "available_query")
