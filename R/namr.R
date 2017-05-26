@@ -18,14 +18,15 @@ pick_word_from_title <- function(title, remove_punct = F){
   # remove R-specific stopwords, things that are commonly in package titles but
   # aren't helpful for telling you what the package is about
   if(length(word_vector) > 1){
-    R_stop_words <- c("library", "libraries", "analysis", "analyses", "class", "classes", "method",
-                      "object", "objects", "model", "import", "data", "function", "format", "plug-in",
-                      "plugin", "API", "client", "access", "interface", "tool", "compute", "help",
-                      "calculate", "calculation", "calculating", "toolbox", "read", "statistics",
-                      "statistical", "math", "mathematics", "mathematically", "modeling", "modelling",
-                      "numeric", "file", "plot", "plotting", "plots", "wrapper", "read", "write",
-                      "metadata", "package", "distrobution")
-    word_vector <- word_vector[!word_vector %in% R_stop_words]
+    R_stop_words <- c("libr*", "analys*", "class*", "method*",
+                      "object*", "model*", "import*", "*data*", "function*", "format*", "plug-in",
+                      "plugin", "API", "client*", "access*", "interfac*", "tool*", "comput*", "help*",
+                      "calcul*", "tool*", "read*", "stat*", "math*", "numer*", "file*", "plot*",
+                      "wrap*", "read*", "writ*", "pack*", "dist*", "algo*", "code*", "frame*")
+
+    # check each possible word against our stop terms
+    R_stop_check <- apply(as.matrix(word_vector), 1, function(x){vapply(R_stop_words, grepl, logical(1), x = x)})
+    word_vector <- word_vector[colMeans(R_stop_check) == 0]
     word_vector <- na.omit(word_vector)
   }
 
@@ -116,14 +117,13 @@ make_spelling_rlike <- function(word){
 # make_spelling_rlike("instr") # should return rinstr
 
 
-# function to add "viz", "vis" or "plot" to name if package title contins "plot"
-# or "viz/sualize"
-plot_vis_add_to_name <- function(title, name){
+# function to add common, informative suffixes
+common_suffixes <- function(title, name){
   # add "plot", "viz" or "vis" to the end of the package name if that appears in the title
-  if(grepl("viz*",title, ignore.case = T)){
+  if(grepl(" viz*",title, ignore.case = T)){
     return(paste(c(name, "viz"), collapse = ""))
   }
-  if(grepl("vis*",title, ignore.case = T)){
+  if(grepl(" vis*",title, ignore.case = T)){
     return(paste(c(name, "vis"), collapse = ""))
   }
   if(grepl("plot*",title, ignore.case = T)){
@@ -136,3 +136,14 @@ plot_vis_add_to_name <- function(title, name){
 # plot_vis_add_to_name("package for plotting things","my") # should return "myplot"
 # plot_vis_add_to_name("vizulier 2000 the reboot","my") # should return "myviz"
 
+# funciton that strings funtions together
+namr <- function(title){
+  name <- make_spelling_rlike(pick_word_from_title(title))
+  name <- common_suffixes(title, name)
+  return(name)
+}
+
+# # some real  test examples
+# namr("A Package for Displaying Visual Scenes as They May Appear to an Animal with Lower Acuity")
+# namr("Analysis of Ecological Data : Exploratory and Euclidean Methods in Environmental Sciences")
+# namr("Population Assignment using Genetic, Non-Genetic or Integrated Data in a Machine Learning Framework")
