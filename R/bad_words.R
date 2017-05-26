@@ -27,6 +27,33 @@ print.available_bad_words <- function(x) {
     if (length(x) == 0) {
       crayon::green(clisymbols::symbol$tick)
     } else {
-      crayon::red(glue::collapse(x, sep = ", ", last = " and "))
+      crayon::bgRed(glue::collapse(x, sep = ", ", last = " and "))
     }, "\n", sep = "")
+}
+
+mark_bad_words <- function(
+  text, marker = crayon::make_style("red", bg = TRUE)) {
+
+  vapply(
+    tolower(text),
+    mark_bad_words1,
+    character(1),
+    marker = marker,
+    USE.NAMES = FALSE
+  )
+}
+
+mark_bad_words1 <- function(text1, marker) {
+  word_pos <- gregexpr("\\b\\w+\\b", text1)
+  if (length(word_pos[[1]]) == 1 && word_pos == -1) return(text1)
+  start <- c(word_pos[[1]])
+  end <- start + attr(word_pos[[1]], "match.length") - 1
+  words <- substring(text1, start, end)
+  stemmed <- SnowballC::wordStem(words, language = "english")
+
+  bad <- words %in% bad_words() | stemmed %in% bad_words()
+  regmatches(text1, word_pos) <- list(ifelse(
+    bad, marker(words), words
+  ))
+  text1
 }
