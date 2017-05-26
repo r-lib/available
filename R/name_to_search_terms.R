@@ -18,7 +18,7 @@ name_to_search_terms <- function(name){
   searchTermsWithR <- unique(c(searchTerms, unlist(strsplit(x = searchTerms, split = "[rR]"))))
   
   # remove elements that are just "r", "R" or empty & add name
-  finalSearchTerms <- c(setdiff(searchTermsWithR, c("r","R","")), name)
+  finalSearchTerms <- unique(c(setdiff(searchTermsWithR, c("r","R","", name)), name))
   
   # return vector of sarch terms
   return(finalSearchTerms)  
