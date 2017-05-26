@@ -7,8 +7,7 @@
 \usage{
 available_on_bioc(name, repos = NULL, ...)
 
-available_on_cran(name, repos = c(CRAN = "https://cloud.r-project.org",
-  CRANextra = "http://www.stats.ox.ac.uk/pub/RWin"), ...)
+available_on_cran(name, repos = default_cran_repos, ...)
 }
 \arguments{
 \item{name}{Name of package to search}
