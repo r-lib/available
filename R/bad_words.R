@@ -1,8 +1,3 @@
-#' List of bad words
-#'
-#' @note See \url{https://github.com/web-mech/badwords}
-
-
 bad_words <- memoise::memoise(function() {
   url <- "https://raw.githubusercontent.com/web-mech/badwords/master/lib/lang.json"
 
@@ -20,20 +15,21 @@ bad_words <- memoise::memoise(function() {
 #'
 #' @inheritParams available
 #' @export
-check_bad_words <- function(name) {
+#' @seealso See \url{https://github.com/web-mech/badwords}
+get_bad_words <- function(name) {
   # check each bad word to see if in package name
   check <- vapply(bad_words(), function(word) {
     stringr::str_detect(name, word)
   }, logical(1))
 
-  if(any(check)) {
-    bad <- bad_words()[check]
-    stop(
-      sprintf("Your package name includes the bad word(s): %s", paste0(bad, collapse = ", ")),
-      call. = FALSE
-    )
-  }
+  structure(bad_words()[check], class = "available_bad_words")
+}
 
-  print("Your package name does not include any bad words")
-  invisible(TRUE)
+print.available_bad_words <- function(x) {
+cat(crayon::bold("Bad Words: "),
+  if (length(x) == 0) {
+    crayon::green(clisymbols::symbol$tick)
+  } else {
+    crayon::red(glue::collapse(x))
+  }, "\n", sep = "")
 }
