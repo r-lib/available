@@ -12,14 +12,16 @@ name_to_search_terms <- function(name){
   uppersLast <- strsplit(gsub('([[:upper:]])', '\\1 ', output[[1]]), split = " ")
   
   # combine list of search terms generated based on different assumptions about use of capitals
-  searchTerms <- unique(unlist(c(uppersFirst, uppersLast, removedUppers)))
+  search_terms <- unique(unlist(c(uppersFirst, uppersLast, removedUppers)))
   
   # generate test strings by splitting on/removing r
-  searchTermsWithR <- unique(c(searchTerms, unlist(strsplit(x = searchTerms, split = "[rR]"))))
+  #searchTermsWithR <- unique(c(searchTerms, unlist(strsplit(x = searchTerms, split = "R"))))
   
   # remove elements that are just "r", "R" or empty & add name
-  finalSearchTerms <- unique(c(setdiff(searchTermsWithR, c("r","R","", name)), name))
-  
-  # return vector of sarch terms
-  return(finalSearchTerms)  
+  search_terms <- c(setdiff(search_terms, c("r","R","", name)), name)
+
+  #remove trailing r that is not preceded by a vowel
+  search_terms <- sub("(?![aeiou])[Rr]$", "", search_terms, perl = TRUE)
+
+  unique(search_terms)
 }
