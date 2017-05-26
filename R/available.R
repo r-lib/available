@@ -45,3 +45,21 @@ create <- function(name, ...) {
     devtools::create(name, ...)
   }
 }
+
+#' Suggest a title based for a development package
+#'
+#' If the package you are using already has a title, simply pass the path to
+#' the package root in `path`. Otherwise use `title` to specify a potential
+#' title.
+#' @param path Path to a existing package to extract the title from.
+#' @param title title string to search.
+suggest <- function(path = ".", title = NULL, ...) {
+  if (is.null(title)) {
+    title <- desc::desc(pkg)$get("Title")
+    if (is.na(title)) {
+      stop("No title found, please specify one with `title`.", call. = FALSE)
+    }
+  }
+
+  pick_word_from_title(title)
+}

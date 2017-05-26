@@ -1,5 +1,5 @@
 Package: available
-Title: Check if a package name is available to use
+Title: Check if the name of a package is available, appropriate and interesting
 Version: 0.0.0.9000
 Authors@R: c(
     person("Carl", "Ganz", role = c("aut")),
@@ -23,7 +23,8 @@ Imports: jsonlite,
   purrr,
   stringr,
   clisymbols,
-  glue
+  glue,
+  desc
 Suggests:
   testthat,
   BiocInstaller,
