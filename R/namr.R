@@ -1,5 +1,5 @@
 #' @importFrom stats na.omit
-
+#' @import tidytext
 # This is a set of functions to generate a package name, given the title of the package
 
 # This function picks a single word from the title
@@ -63,7 +63,7 @@ pick_word_from_title <- function(title, verb = F) {
   # remove punctuation
   package_name <- gsub("[[:punct:]]", "", package_name)
 
-  # make sure 
+  # make sure
   if(length(package_name) == 0) {
     stop("Sorry, we couldn't make a good name from your tile.")
   }
