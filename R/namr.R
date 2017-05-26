@@ -136,10 +136,33 @@ common_suffixes <- function(title, name){
 # plot_vis_add_to_name("package for plotting things","my") # should return "myplot"
 # plot_vis_add_to_name("vizulier 2000 the reboot","my") # should return "myviz"
 
-# funciton that strings funtions together
-namr <- function(title){
+# function to (optionally) include the first acronym used in the title
+find_acronym <- function(title){
+  # split string
+  title_vector <- unlist(strsplit(title, " "))
+
+  # return all
+  acronyms <- title_vector[grep("^[[:upper:]]{2,}$", title_vector)]
+
+  # check to make sure it's not already the title
+  word <- pick_word_from_title(title)
+
+  # make sure we don't have a name with reduplication
+  if(word %in% tolower(acronyms)){
+    stop("Title is already acronym.")
+  }
+
+  # return the first acronym from the title
+  return(acronyms[1])
+}
+
+# funciton that strings functions together
+namr <- function(title, acronym = F){
   name <- pick_word_from_title(title)
   name <- make_spelling_rlike(name)
+  if(acronym){
+    name <- paste(c(name, find_acronym(title)), collapse = "")
+  }
   name <- common_suffixes(title, name)
   return(name)
 }
