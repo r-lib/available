@@ -1,7 +1,7 @@
 context("Load packages from CRAN")
 
 test_that("Can find dplyr", {
-  expect_true(length(available_on_cran("dplyr"))>0)
+  expect_false(available_on_cran("dplyr"))
 })
 
 test_that("Can't find made up package", {

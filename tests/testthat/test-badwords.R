@@ -5,5 +5,5 @@ test_that("Catches bad word", {
 })
 
 test_that("Passes safe word", {
-  expect_error(check_bad_words("happy"))
+  expect_true(check_bad_words("happy"))
 })
