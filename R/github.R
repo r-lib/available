@@ -25,7 +25,6 @@ available_on_github <- function(name) {
     class = "available_github")
 }
 
-
 gh_pkgs <- memoise::memoise(function() {
   res <- jsonlite::fromJSON("http://rpkg.gepuro.net/download")
   res <- res$pkg_list
