@@ -27,7 +27,7 @@ get_wiktionary <- function(name) {
 
 print.available_wiktionary <- function(x) {
   browseURL(x[[1]])
-  cat(crayon::bold("Wiktionary: "), x[[1L]], "\n", sep = "")
+  cat(crayon::bold("Wiktionary: "), crayon::blue(x[[1L]]), "\n", sep = "")
 
   invisible(x)
 }
@@ -41,7 +41,7 @@ get_abbreviation <- function(name) {
 
 print.available_abbreviation <- function(x) {
   browseURL(x[[1]])
-  cat(crayon::bold("Abbreviations: "), x[[1L]], "\n", sep = "")
+  cat(crayon::bold("Abbreviations: "), crayon::blue(x[[1L]]), "\n", sep = "")
 
   invisible(x)
 }
