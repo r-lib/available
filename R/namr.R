@@ -3,16 +3,20 @@
 # This is a set of functions to generate a package name, given the title of the package
 
 # This function picks a single word from the title
+
 pick_word_from_title <- function(title) {
   # to lower case
   title <- tolower(title)
 
   # convert to vector of words
+
   word_vector <- unlist(strsplit(title, "[[:space:]]+"))
   if (length(word_vector) == 0) {
     return(character())
   }
 
+  # remove R-specific stopwords, things that are commonly in package titles but
+  # aren't helpful for telling you what the package is about
   R_stop_words <- c("libr", "analys", "class", "method",
     "object", "model", "import", "data", "function", "format", "plug-in",
     "plugin", "API", "client", "access", "interfac", "tool", "comput", "help",
@@ -20,6 +24,7 @@ pick_word_from_title <- function(title) {
     "wrap", "read", "writ", "pack", "dist", "algo", "code", "frame", "viz",
     "vis")
 
+  # remove English stop words
   english_stop_words <- tidytext::stop_words$word
 
   word_vector <- word_vector[!word_vector %in% c(english_stop_words)]
@@ -51,6 +56,7 @@ pick_word_from_title <- function(title) {
   # remove punctuation
   package_name <- gsub("[[:punct:]]", "", package_name)
 
+  # make sure 
   if(length(package_name) == 0) {
     stop("Sorry, we couldn't make a good name from your tile.")
   }
@@ -132,7 +138,8 @@ common_suffixes <- function(title, name){
 
 # funciton that strings funtions together
 namr <- function(title){
-  name <- make_spelling_rlike(pick_word_from_title(title))
+  name <- pick_word_from_title(title)
+  name <- make_spelling_rlike(name)
   name <- common_suffixes(title, name)
   return(name)
 }
