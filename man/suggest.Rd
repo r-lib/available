@@ -4,7 +4,7 @@
 \alias{suggest}
 \title{Suggest a title based for a development package}
 \usage{
-suggest(path = ".", title = NULL, ...)
+suggest(path = ".", title = NULL)
 }
 \arguments{
 \item{path}{Path to a existing package to extract the title from.}

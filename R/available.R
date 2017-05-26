@@ -53,7 +53,8 @@ create <- function(name, ...) {
 #' title.
 #' @param path Path to a existing package to extract the title from.
 #' @param title title string to search.
-suggest <- function(path = ".", title = NULL, ...) {
+#' @export
+suggest <- function(path = ".", title = NULL) {
   if (is.null(title)) {
     title <- desc::desc(pkg)$get("Title")
     if (is.na(title)) {
