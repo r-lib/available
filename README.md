@@ -5,7 +5,7 @@
 available
 =========
 
-The goal of available is to help you choose a good name for your R package. It can help you determine if the package name you are considering is available to use (both on GitHub and CRAN), check to make sure you haven't unintenionally chosen a bad word by checking Urban Dictionary and searches for the name on Wikipedia. It can also suggest a possible package name from the title of your package.
+The goal of available is to help you choose a good name for your R package. It can help you determine if the package name you are considering is available to use (both on GitHub, CRAN and Bioconductor), check to make sure you haven't unintenionally chosen a bad word by checking Urban Dictionary and searches for the name on Wikipedia. It can also suggest a possible package name from the title of your package.
 
 Installation
 ------------
