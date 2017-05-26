@@ -1,7 +1,7 @@
 #' Open wikipedia page and abbreviations.com page
 #'
-#' @param name Name of package to search
-
+#' @inheritParams available
+#' @export
 get_wikipidia <- function(name) {
   # TODO: handle case when we can't open browser
   url <- paste0("https://en.wikipedia.org/wiki/", name)
@@ -16,6 +16,8 @@ print.available_wikipedia <- function(x) {
   invisible(x)
 }
 
+#' @rdname get_wikipidia
+#' @export
 get_wiktionary <- function(name) {
   # TODO: handle case when we can't open browser
   url <- paste0("https://en.wiktionary.org/wiki/", name)
