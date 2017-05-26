@@ -12,6 +12,8 @@ bad_words <- memoise::memoise(function() {
   # remove blank and short strings
   words <- words[nchar(words)>2]
 
+  words
+
 })
 
 #' Check for bad words in name
