@@ -1,20 +1,6 @@
-# Function to generate possible package names take in a package title and
-# generate possible R-like package names
+# Functions to generate a package name, given the title of the package
 
-# examples:
-# Soil Physical Analysis -> soilphysics
-# JAR Files of the Apache Commons Mathematics Library -> commonsMath
-# Tools for Distance Metrics -> distances
-
-# rules:
-# if any word starts with "vis", add "vis" to the end of the package name
-# if any word starts wiht "viz", add "viz" to the end of the package name
-# if any word starts with "plot", add "plot" to the end of the package name
-# if any word starts with "tidy", add "tidy" to the beginning of the package name
-# if selected word ends in vowel+r, remove vowel beamer -> beamr
-# select words at least six characters long
-# prioritize words near the edges
-
+# This function picks a single word from the title
 pick_word_from_title <- function(title, remove_punct = F){
   # to lower case
   title <- tolower(title)
@@ -37,20 +23,21 @@ pick_word_from_title <- function(title, remove_punct = F){
                       "plugin", "API", "client", "access", "interface", "tool", "compute", "help",
                       "calculate", "calculation", "calculating", "toolbox", "read", "statistics",
                       "statistical", "math", "mathematics", "mathematically", "modeling", "modelling",
-                      "numeric", "file", "plot", "plotting", "plots", "wrapper")
+                      "numeric", "file", "plot", "plotting", "plots", "wrapper", "read", "write",
+                      "metadata", "package", "distrobution")
     word_vector <- word_vector[!word_vector %in% R_stop_words]
-    word_vector <- na.omit(word_vector)
-  }
-
-  # remove very short words (< 5 characters)
-  if(length(word_vector) > 1){
-    word_vector <- word_vector[nchar(word_vector) > 5]
     word_vector <- na.omit(word_vector)
   }
 
   # remove very long words (> 15 charactesr)
   if(length(word_vector) > 1){
     word_vector <- word_vector[nchar(word_vector) < 15]
+    word_vector <- na.omit(word_vector)
+  }
+
+  # remove very short words (< 5 characters)
+  if(length(word_vector) > 1){
+    word_vector <- word_vector[nchar(word_vector) > 5]
     word_vector <- na.omit(word_vector)
   }
 
@@ -84,18 +71,68 @@ pick_word_from_title <- function(title, remove_punct = F){
 # pick_word_from_title("wrapper for the intro.js library", remove_punct = T)
 
 
-#### spelling transformations to make package names more r-like ####
+# spelling transformations to make package names more r-like & make it easier to
+# google
+make_spelling_rlike <- function(word){
+    # convert string into vector of lowercase characters
+  chars <- unlist(strsplit(tolower(word),""))
 
-# remove second to last letter if it's a vowel and the last letter is r
+  # list of vowels
+  vowels <- c("a","e","i","o","u")
 
-# if the word ends with an r but there isn't a vowel in front of it, add an r to the beginning
+  # set a variable that tells us whether we've made a spelling transformation
+  spelling_changed <- F
 
-# if the first letter is a vowel and the second letter is an r, remove the first letter
+  # remove second to last letter if it's a vowel and the last letter is r
+  if(chars[length(chars) -1] %in% vowels & chars[length(chars)] == "r"){
+    chars <- chars[-(length(chars) - 1)]
+    spelling_changed <- T
+  }
 
-# if there isn't one already, add an "r" to the end
+  # if the first letter is a vowel and the second letter is an r, remove the first letter
+  if(chars[1] %in% vowels & chars[2] == "r" & spelling_changed == F){
+    chars <- chars[-1]
+    spelling_changed <- T
+  }
 
-# add "plot", "viz" or "vis" to the package name if that appears in the title
-grepl("viz*",title, ignore.case = T)
-grepl("vis*",title, ignore.case = T)
-grepl("plot*",title, ignore.case = T)
+  # if the word ends with an r but there isn't a vowel in front of it, add an r to the beginning
+  if(chars[length(chars) -1] %in% vowels == F & chars[length(chars)] == "r"& spelling_changed == F){
+    chars <- c("r", chars)
+    spelling_changed <- T
+  }
+
+  # if there hasn't been a spelling change, add an "r" to the end
+  if(spelling_changed == F){
+    chars <- c(chars, "r")
+  }
+
+  return(paste(unlist(chars), collapse = ""))
+}
+
+# # testing function.
+# make_spelling_rlike("tidy") # Should return "tidyr"
+# make_spelling_rlike("archive") #should retun rchive
+# make_spelling_rlike("reader") # should return readr
+# make_spelling_rlike("instr") # should return rinstr
+
+
+# function to add "viz", "vis" or "plot" to name if package title contins "plot"
+# or "viz/sualize"
+plot_vis_add_to_name <- function(title, name){
+  # add "plot", "viz" or "vis" to the end of the package name if that appears in the title
+  if(grepl("viz*",title, ignore.case = T)){
+    return(paste(c(name, "viz"), collapse = ""))
+  }
+  if(grepl("vis*",title, ignore.case = T)){
+    return(paste(c(name, "vis"), collapse = ""))
+  }
+  if(grepl("plot*",title, ignore.case = T)){
+    return(paste(c(name, "plot"), collapse = ""))
+  }
+  return(name)
+}
+
+# #testing fuction
+# plot_vis_add_to_name("package for plotting things","my") # should return "myplot"
+# plot_vis_add_to_name("vizulier 2000 the reboot","my") # should return "myviz"
 
