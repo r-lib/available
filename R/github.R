@@ -4,7 +4,7 @@
 #' @importFrom jsonlite fromJSON
 #' @export
 available_on_github <- function(name) {
-  github_names <- github_packages()
+  github_names <- gh_pkgs()
 
   same <- tolower(name) == tolower(github_names[["pkg_name"]])
   if (any(same)) {
@@ -25,21 +25,14 @@ available_on_github <- function(name) {
     class = "available_github")
 }
 
-github_packages <- memoise::memoise(function() {
-  # url of github R packages JSON
-  github_db_url <- "http://rpkg.gepuro.net/download"
 
-  # parse JSON into R
-  github_db <- jsonlite::read_json(github_db_url)[[1]]
-
-  # parse package names from JSON
-  github_names <- dplyr::bind_rows(github_db)
-
-  # remove github username
-  github_names[["pkg_name"]] <- stringr::str_extract(github_names[["pkg_name"]], "([^/]+$)")
-
-  github_names
-
+gh_pkgs <- memoise::memoise(function() {
+  res <- jsonlite::fromJSON("http://rpkg.gepuro.net/download")
+  res <- res$pkg_list
+  res$pkg_location <- res$pkg_name
+  res$pkg_org <- vapply(strsplit(res$pkg_location, "/"), `[[`, character(1), 1)
+  res$pkg_name <- vapply(strsplit(res$pkg_location, "/"), `[[`, character(1), 2)
+  res[!(res$pkg_org == "cran" | res$pkg_org == "Bioconductor-mirror" | res$pkg_name %in% available_packages()[, "Package"]), ]
 })
 
 print.available_github <- function(x) {
