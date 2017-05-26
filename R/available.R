@@ -29,3 +29,19 @@ print.available_query <- function(x) {
   }
   invisible(x)
 }
+
+#' Check a new package name and possibly create it
+#'
+#' @inheritParams available
+#' @param ... Additional arguments passed to [devtools::create()].
+create <- function(name, ...) {
+  print(available(name))
+
+  ans <- yesno::yesno(glue::glue("Create package `{name}`?"))
+  if (isTRUE(ans)) {
+    if (!requiredNamespace("devtools")) {
+      stop("`devtools` must be installed to create a package", call. = FALSE)
+    }
+    devtools::create(name, ...)
+  }
+}
