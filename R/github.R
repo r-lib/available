@@ -31,7 +31,9 @@ gh_pkgs <- memoise::memoise(function() {
   res$pkg_location <- res$pkg_name
   res$pkg_org <- vapply(strsplit(res$pkg_location, "/"), `[[`, character(1), 1)
   res$pkg_name <- vapply(strsplit(res$pkg_location, "/"), `[[`, character(1), 2)
-  res[!(res$pkg_org == "cran" | res$pkg_org == "Bioconductor-mirror" | res$pkg_name %in% available_packages()[, "Package"]), ]
+  res[!(res$pkg_org == "cran" |
+    res$pkg_org == "Bioconductor-mirror" |
+    res$pkg_name %in% available_packages(repos = default_cran_repos)[, "Package"]), ]
 })
 
 print.available_github <- function(x) {
