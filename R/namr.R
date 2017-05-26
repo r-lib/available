@@ -66,8 +66,13 @@ pick_word_from_title <- function(title, remove_punct = F){
     package_name <- gsub("[[:punct:]]", "", package_name)
   }
   
-  # return out single word
-  return(package_name)
+  if(length(package_name) > 1){
+    # return out single word
+    return(package_name)
+  }else{
+    # return error message if all words were stop words
+    stop("Sorry, we couldn't make a good name from your tile.")
+  }
 }
 
 # # test: should return "intro.js" & "introjs"
