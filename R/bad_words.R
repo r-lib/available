@@ -14,6 +14,10 @@ bad_words <- memoise::memoise(function() {
 
 })
 
+#' Check for bad words in name
+#'
+#' @inheritParams available
+#' @export
 check_bad_words <- function(name) {
   # check each bad word to see if in package name
   check <- vapply(bad_words(), function(word) {
