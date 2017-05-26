@@ -35,3 +35,13 @@ This is a basic example which shows you how to solve a common problem:
 ```{r example}
 available::available("available")
 ```
+
+### Rstudio Support
+In order to have color in the RStudio terminal you need a [daily build of
+RStudio](https://dailies.rstudio.com/) and development versions of the
+**rstudioapi** and **crayon** packages.
+
+```r
+devtools::install_github("rstudio/rstudioapi")
+devtoosl::install_github("gaborcsardi/crayon")
+```
