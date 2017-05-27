@@ -27,10 +27,13 @@ available <- function(name, ...) {
           get_urban_data(term),
           sentiment(term))
           })))
-    structure(res, class = "available_query")
+    structure(res, class = "available_query", packagename = name)
 }
 
+#' @export
+
 print.available_query <- function(x) {
+  cat(boxes::rule(attr(x, "packagename")), "\n", sep = "")
   for (i in x) {
     print(i)
   }
