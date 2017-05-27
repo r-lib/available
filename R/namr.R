@@ -136,6 +136,9 @@ common_suffixes <- function(title, name){
   if(grepl("\\<plot",title, ignore.case = T)){
     return(paste(c(name, "plot"), collapse = ""))
   }
+  if(grepl("\\<markdown",title, ignore.case = T)){
+    return(paste(c(name, "down"), collapse = ""))
+  }
   return(name)
 }
 
