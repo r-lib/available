@@ -31,8 +31,7 @@ available <- function(name, ...) {
 }
 
 #' @export
-
-print.available_query <- function(x) {
+print.available_query <- function(x, ...) {
   cat(boxes::rule(attr(x, "packagename")), "\n", sep = "")
   for (i in x) {
     print(i)
