@@ -3,7 +3,8 @@
 #' @param name Name of package to search
 #' @export
 sentiment <- function(name) {
-  library(tidytext)
+  # Workaround for https://github.com/juliasilge/tidytext/issues/64
+  ("base" %:::% "library")("tidytext")
   on.exit(detach("package:tidytext"))
   sentiment_dictionary <- tidytext::get_sentiments("bing")
 
