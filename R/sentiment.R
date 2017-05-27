@@ -4,7 +4,7 @@
 #' @export
 sentiment <- function(name) {
   library(tidytext)
-  on.exit(detach("tidytext"))
+  on.exit(detach("package:tidytext"))
   sentiment_dictionary <- tidytext::get_sentiments("bing")
 
   res <- sentiment_dictionary[sentiment_dictionary$word == name, ][["sentiment"]]
