@@ -5,7 +5,7 @@
 available
 =========
 
-The goal of available is to help you choose a good name for your R package. It helps you determine if the package name you are considering is available to use (on GitHub, CRAN and Bioconductor), checks Urban Dictionary to make sure you haven't unintentionally chosen a bad word, searches for the name on Wikipedia, checks the sentiment of your chosen name and lets you know about packages with similar names. It can also suggest a possible names for your package based on its title or a short description of what it does.
+The goal of available is to help you choose a good name for your R package. It helps you determine if the package name you are considering is available to use (on GitHub, CRAN and Bioconductor), checks Urban Dictionary to make sure you haven't unintentionally chosen a bad word, searches for the name on Wikipedia, checks the sentiment of your chosen name and lets you know about packages with similar names. It can also suggest a possible name for your package based on its title or a short description of what it does.
 
 Installation
 ------------
@@ -24,9 +24,28 @@ This is a basic example which shows you how to solve a common problem:
 
 ``` r
 available::available("available")
-#> Name valid: ✓ 
-#> Available on CRAN: ✓ 
-#> Available on Bioconductor: ✓ 
-#> Available on GitHub: X 
-#> Sentiment: +++
+#> ── available ───────────────────────────────────────────────────────────────────
+#> Name valid: ✔
+#> Available on CRAN: ✔
+#> Available on Bioconductor: ✔
+#> Available on GitHub:  ✖
+#> Bad Words: ✔
+#> Abbreviations: http://www.abbreviations.com/available
+#> Wikipedia: https://en.wikipedia.org/wiki/available
+#> Wiktionary: https://en.wiktionary.org/wiki/available
+#> Urban Dictionary:
+#>   what someone is if they're not in a relationship.
+#>   Tags: single availability free unavailable the online sex for no taken
+#> 
+#>   http://available.urbanup.com/1309715
+#> Sentiment:+++
+```
+
+### Rstudio Support
+
+In order to have color in the RStudio terminal you need a [daily build of RStudio](https://dailies.rstudio.com/) and development versions of the **rstudioapi** and **crayon** packages.
+
+``` r
+devtools::install_github("rstudio/rstudioapi")
+devtoosl::install_github("gaborcsardi/crayon")
 ```
