@@ -26,7 +26,6 @@ Imports:
   purrr,
   SnowballC,
   stringdist,
-  stringr,
   tibble,
   udapi,
   yesno
