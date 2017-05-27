@@ -4,6 +4,8 @@
 <p align="center">
 <img src="http://i.imgur.com/1KZn3Z5.jpg" alt="xzibit">
 </p>
+ 
+
 available
 =========
 
@@ -30,6 +32,8 @@ Examples
 <p align="center">
 <img src="http://i.imgur.com/tA1VdaH.png">
 </p>
+ 
+
 Generate new package names from titles
 --------------------------------------
 
