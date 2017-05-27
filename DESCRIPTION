@@ -3,7 +3,7 @@ Title: Check if the name of a package is available, appropriate and interesting
 Version: 0.0.0.9000
 Authors@R: c(
     person("Carl", "Ganz", role = c("aut")),
-    person("Gábor", "Csárdi", , "csardi.gabor@gmail.com"),
+    person("Gábor", "Csárdi", , "csardi.gabor@gmail.com", role = c("aut")),
     person("Jim", "Hester", email = "james.f.hester@gmail.com", role = c("aut", "cre")),
     person("Molly", "Lewis", role = c("aut")),
     person("Rachael", "Tatman", role = c("aut"))
