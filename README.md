@@ -1,16 +1,23 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 [![Travis-CI Build Status](https://travis-ci.org/ropenscilabs/available.svg?branch=master)](https://travis-ci.org/ropenscilabs/available)
-
+<p align="center">
+<img src="http://i.imgur.com/1KZn3Z5.jpg" alt="xzibit">
+</p>
 available
 =========
 
-The goal of available is to help you choose a good name for your R package. It helps you determine if the package name you are considering is available to use (on GitHub, CRAN and Bioconductor), checks Urban Dictionary to make sure you haven't unintentionally chosen a bad word, searches for the name on Wikipedia, checks the sentiment of your chosen name and lets you know about packages with similar names. It can also suggest a possible name for your package based on its title or a short description of what it does.
+> available helps you name your R package.
+
+-   Checks for validity
+-   Checks not already available on GitHub, CRAN and Bioconductor
+-   Searches Urban Dictionary, Wiktionary and Wikipedia for unintended meanings
+-   Can suggest possible names based on text in the package title or description.
 
 Installation
 ------------
 
-You can install available from github with:
+You can install available from GitHub with:
 
 ``` r
 # install.packages("devtools")
@@ -23,14 +30,13 @@ Examples
 <p align="center">
 <img src="http://i.imgur.com/tA1VdaH.png">
 </p>
-
 Generate new package names from titles
 --------------------------------------
 
 ``` r
 library(available)
 suggest(title = "Client for New York Times APIs")
-#> [1] "york"
+#> [1] "times"
 
 suggest(title = "An R Interface to SciDB")
 #> [1] "scidb"
