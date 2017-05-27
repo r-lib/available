@@ -17,14 +17,13 @@ You can install available from github with:
 devtools::install_github("ropenscilabs/available")
 ```
 
-Example
--------
-
-This is a basic example which shows you how to solve a common problem:
+Examples
+--------
 
 <p align="center">
 <img src="http://i.imgur.com/tA1VdaH.png">
 </p>
+
 Generate new package names from titles
 --------------------------------------
 
