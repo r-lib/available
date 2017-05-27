@@ -18,11 +18,11 @@ pick_word_from_title <- function(title, verb = F) {
   # remove R-specific stopwords, things that are commonly in package titles but
   # aren't helpful for telling you what the package is about
   R_stop_words <- c("libr", "analys", "class", "method",
-    "object", "model", "import", "data", "function", "format", "plug-in",
-    "plugin", "API", "client", "access", "interfac", "tool", "comput", "help",
-    "calcul", "tool", "read", "stat", "math", "numer", "file", "plot",
-    "wrap", "read", "writ", "pack", "dist", "algo", "code", "frame", "viz",
-    "vis")
+                    "object", "model", "import", "data", "function", "format", "plug-in",
+                    "plugin", "API", "client", "access", "interfac", "tool", "comput", "help",
+                    "calcul", "tool", "read", "stat", "math", "numer", "file", "plot",
+                    "wrap", "read", "writ", "pack", "dist", "algo", "code", "frame", "viz",
+                    "vis", "auto", "explor", "funct", "esti", "equa", "bayes")
 
   # remove English stop words
   english_stop_words <- tidytext::stop_words$word
