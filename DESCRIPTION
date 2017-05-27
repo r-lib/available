@@ -8,7 +8,7 @@ Authors@R: c(
     person("Rachael", "Tatman", role = c("aut"))
     )
 Description: Check if a package name is available to use.
-Depends: R (>= 3.4.0)
+Depends: R (>= 3.1.0)
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
@@ -17,6 +17,7 @@ Imports:
   boxes,
   clisymbols,
   crayon,
+  tidytext,
   desc,
   glue,
   jsonlite,
@@ -26,7 +27,6 @@ Imports:
   stringdist,
   stringr,
   tibble,
-  tidytext,
   udapi,
   yesno
 Suggests:
