@@ -34,7 +34,7 @@ get_wiktionary <- function(name) {
 
 #' @export
 
-format.available_wiktionary <- function(x) {
+format.available_wiktionary <- function(x, ...) {
   browseURL(x[[1]])
   paste0(crayon::bold("Wiktionary: "), crayon::blue(x[[1L]]), "\n")
 }
