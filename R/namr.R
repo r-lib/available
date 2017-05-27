@@ -2,8 +2,17 @@
 #' @import tidytext
 # This is a set of functions to generate a package name, given the title of the package
 
-# This function picks a single word from the title
-
+#' Pick word from title
+#'
+#' picks a single (hopefully informative) word from the provided title or package discription
+#'
+#' @param title text string to pick word from. Pakage title or discription.
+#' @param verb whether you would like to prioritize returning a verb
+#'
+#' @return a single word from the title
+#'
+#'
+#' @export
 pick_word_from_title <- function(title, verb = F) {
   # to lower case
   title <- tolower(title)
@@ -76,8 +85,18 @@ pick_word_from_title <- function(title, verb = F) {
 # pick_word_from_title("wrapper for the intro.js library", remove_punct = T)
 
 
-# spelling transformations to make package names more r-like & make it easier to
-# google
+
+#' Spelling transformations
+#'
+#' This function takes in a single word and applies spelling transformations to make it more "r-like" 
+#' and easier to Google
+#'
+#' @param word a single word to make more rlike
+#'
+#' @return a single word with a spelling transformation
+#'
+#'
+#' @export
 make_spelling_rlike <- function(word){
   # convert string into vector of lowercase characters
   chars <- unlist(strsplit(tolower(word),""))
@@ -121,6 +140,18 @@ make_spelling_rlike <- function(word){
 # make_spelling_rlike("instr") # should return rinstr
 
 
+#' Add common suffixes
+#'
+#' Search a title for common terms (plot, vis..., viz..., markdown) and apply
+#' appropriate affixes to a given word as appliable.
+#'
+#' @param title the package title or discription
+#' @param name the single word that will be appended to
+#'
+#' @return a single word with affix, if applicable
+#'
+#'
+#' @export
 # function to add common, informative suffixes
 common_suffixes <- function(title, name){
   # add "plot", "viz" or "vis" to the end of the package name if that appears in the title
@@ -146,7 +177,15 @@ common_suffixes <- function(title, name){
 # plot_vis_add_to_name("package for plotting things","my") # should return "myplot"
 # plot_vis_add_to_name("vizulier 2000 the reboot","my") # should return "myviz"
 
-# function to (optionally) include the first acronym used in the title
+#' Function that finds and returns the first acronym (all caps) in a text string
+#'
+#'
+#' @param title package title or discription
+#'
+#' @return a single acronym, if present
+#'
+#'
+#' @export
 find_acronym <- function(title){
   # split string
   title_vector <- unlist(strsplit(title, " "))
@@ -166,7 +205,17 @@ find_acronym <- function(title){
   return(acronyms[1])
 }
 
-# funciton that strings functions together
+#' Suggest package name
+#'
+#'  
+#'
+#' @param title the package title or discription
+#' @param acronym whether to include an acronym (if there is one) in the title
+#' @param verb whether to prioritize using a verb in the package title
+#' 
+#' @return a single word to use as a package title
+#'
+#' @export
 namr <- function(title, acronym = F, verb = F, ...){
   name <- pick_word_from_title(title, verb = verb, ...)
   name <- make_spelling_rlike(name)
