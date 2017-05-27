@@ -1,8 +1,8 @@
 #' Get sentiment of name
 #'
 #' @param name Name of package to search
+#' @export
 sentiment <- function(name) {
-  data(package = "tidytext", "sentiments")
   sentiment_dictionary <- tidytext::get_sentiments("bing")
 
   res <- sentiment_dictionary[sentiment_dictionary$word == name, ][["sentiment"]]
