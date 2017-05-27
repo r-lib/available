@@ -22,23 +22,19 @@ Example
 
 This is a basic example which shows you how to solve a common problem:
 
+<p align="center">
+<img src="http://i.imgur.com/tA1VdaH.png">
+</p>
+Generate new package names from titles
+--------------------------------------
+
 ``` r
-available::available("available")
-#> ── available ───────────────────────────────────────────────────────────────────
-#> Name valid: ✔
-#> Available on CRAN: ✔
-#> Available on Bioconductor: ✔
-#> Available on GitHub:  ✖
-#> Bad Words: ✔
-#> Abbreviations: http://www.abbreviations.com/available
-#> Wikipedia: https://en.wikipedia.org/wiki/available
-#> Wiktionary: https://en.wiktionary.org/wiki/available
-#> Urban Dictionary:
-#>   what someone is if they're not in a relationship.
-#>   Tags: single availability free unavailable the online sex for no taken
-#> 
-#>   http://available.urbanup.com/1309715
-#> Sentiment:+++
+library(available)
+suggest(title = "Client for New York Times APIs")
+#> [1] "york"
+
+suggest(title = "An R Interface to SciDB")
+#> [1] "scidb"
 ```
 
 ### Rstudio Support

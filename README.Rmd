@@ -31,8 +31,16 @@ devtools::install_github("ropenscilabs/available")
 
 This is a basic example which shows you how to solve a common problem:
 
-```{r example}
-available::available("available")
+<p align="center">
+  <img src="http://i.imgur.com/tA1VdaH.png">
+</p>
+
+## Generate new package names from titles
+```{r}
+library(available)
+suggest(title = "Client for New York Times APIs")
+
+suggest(title = "An R Interface to SciDB")
 ```
 
 ### Rstudio Support
