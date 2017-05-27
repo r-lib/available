@@ -3,6 +3,8 @@
 #' @param name Name of package to search
 #' @export
 sentiment <- function(name) {
+  library(tidytext)
+  on.exit(detach("tidytext"))
   sentiment_dictionary <- tidytext::get_sentiments("bing")
 
   res <- sentiment_dictionary[sentiment_dictionary$word == name, ][["sentiment"]]
