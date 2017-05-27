@@ -1,17 +1,11 @@
-#' @importFrom stats na.omit
-#' @import tidytext
-# This is a set of functions to generate a package name, given the title of the package
-
 #' Pick word from title
 #'
-#' picks a single (hopefully informative) word from the provided title or package discription
+#' picks a single (hopefully informative) word from the provided title or package description
 #'
-#' @param title text string to pick word from. Pakage title or discription.
+#' @param title text string to pick word from. Package title or description.
 #' @param verb whether you would like to prioritize returning a verb
-#'
 #' @return a single word from the title
-#'
-#'
+#' @keywords internal
 #' @export
 pick_word_from_title <- function(title, verb = F) {
   # to lower case
@@ -94,6 +88,7 @@ pick_word_from_title <- function(title, verb = F) {
 #' @param word a single word to make more rlike
 #'
 #' @return a single word with a spelling transformation
+#' @keywords internal
 #'
 #'
 #' @export
@@ -149,9 +144,9 @@ make_spelling_rlike <- function(word){
 #' @param name the single word that will be appended to
 #'
 #' @return a single word with affix, if applicable
+#' @keywords internal
 #'
 #'
-#' @export
 # function to add common, informative suffixes
 common_suffixes <- function(title, name){
   # add "plot", "viz" or "vis" to the end of the package name if that appears in the title
@@ -183,6 +178,7 @@ common_suffixes <- function(title, name){
 #' @param title package title or discription
 #'
 #' @return a single acronym, if present
+#' @keywords internal
 #'
 #'
 #' @export
@@ -214,8 +210,8 @@ find_acronym <- function(title){
 #' @param verb whether to prioritize using a verb in the package title
 #' 
 #' @return a single word to use as a package title
+#' @keywords internal
 #'
-#' @export
 namr <- function(title, acronym = F, verb = F, ...){
   name <- pick_word_from_title(title, verb = verb, ...)
   name <- make_spelling_rlike(name)
