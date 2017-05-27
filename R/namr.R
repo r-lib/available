@@ -19,10 +19,10 @@ pick_word_from_title <- function(title, verb = F) {
   # aren't helpful for telling you what the package is about
   R_stop_words <- c("libr", "analys", "class", "method",
                     "object", "model", "import", "data", "function", "format", "plug-in",
-                    "plugin", "API", "client", "access", "interfac", "tool", "comput", "help",
+                    "plugin", "api", "client", "access", "interfac", "tool", "comput", "help",
                     "calcul", "tool", "read", "stat", "math", "numer", "file", "plot",
                     "wrap", "read", "writ", "pack", "dist", "algo", "code", "frame", "viz",
-                    "vis", "auto", "explor", "funct", "esti", "equa", "bayes")
+                    "vis", "auto", "explor", "funct", "esti", "equa", "bayes", "learn")
 
   # remove English stop words
   english_stop_words <- tidytext::stop_words$word
@@ -65,7 +65,7 @@ pick_word_from_title <- function(title, verb = F) {
 
   # make sure
   if(length(package_name) == 0) {
-    stop("Sorry, we couldn't make a good name from your tile.")
+    stop("Sorry, we couldn't make a good name from your tile. Try using more specific words in your description.")
   }
 
   package_name
