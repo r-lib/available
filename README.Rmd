@@ -58,5 +58,5 @@ RStudio](https://dailies.rstudio.com/) and development versions of the
 
 ```r
 devtools::install_github("rstudio/rstudioapi")
-devtoosl::install_github("gaborcsardi/crayon")
+devtools::install_github("gaborcsardi/crayon")
 ```
