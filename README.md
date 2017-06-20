@@ -52,5 +52,5 @@ In order to have color in the RStudio terminal you need a [daily build of RStudi
 
 ``` r
 devtools::install_github("rstudio/rstudioapi")
-devtoosl::install_github("gaborcsardi/crayon")
+devtools::install_github("gaborcsardi/crayon")
 ```
