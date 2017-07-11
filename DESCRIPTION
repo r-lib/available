@@ -34,4 +34,4 @@ Suggests:
   BiocInstaller,
   testthat
 Remotes: 
-  r-pkgs/boxes
+  r-lib/boxes
