@@ -32,7 +32,6 @@ format.available_urban <- function(x, ...) {
     tags <- paste(x[[2]], collapse = " ")
     tags <- strwrap(tags, exdent = 2, simplify = TRUE)
     out("\n  Tags: ", mark_bad_words(tags), sep = "")
-    out("\n")
   }
 
   ## Link
