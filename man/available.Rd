@@ -4,10 +4,13 @@
 \alias{available}
 \title{See if a name is available}
 \usage{
-available(name, ...)
+available(name, browse = TRUE, ...)
 }
 \arguments{
 \item{name}{Name of package to search}
+
+\item{browse}{Whether browser should be opened for all web links,
+default = TRUE.}
 
 \item{...}{Additional arguments passed to [utils::available.packages()].}
 }

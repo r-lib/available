@@ -6,10 +6,12 @@
 #' - Positive or negative sentiment
 #' - Urban Dictionary
 #' @param name Name of package to search
+#' @param browse Whether browser should be opened for all web links,
+#'        default = TRUE.
 #' @param ... Additional arguments passed to [utils::available.packages()].
 #' @importFrom memoise memoise
 #' @export
-available <- function(name, ...) {
+available <- function(name, browse = TRUE, ...) {
   res <- list(valid_package_name(name),
     available_on_cran(name, ...),
     available_on_bioc(name, ...),
@@ -27,11 +29,25 @@ available <- function(name, ...) {
           get_urban_data(term),
           sentiment(term))
           })))
-    structure(res, class = "available_query", packagename = name)
+  structure(res, class = ifelse(browse,
+                     "available_query", "available_silent_query"),
+            packagename = name)
 }
 
 #' @export
 print.available_query <- function(x, ...) {
+  cat(boxes::rule(attr(x, "packagename")), "\n", sep = "")
+  for (i in x) {
+    print(i)
+  }
+  invisible(x)
+}
+
+#' @export
+print.available_silent_query <- function(x, ...) {
+  base_browser <- getOption("browser")
+  options(browser = "false")
+  on.exit(options(browser = base_browser))
   cat(boxes::rule(attr(x, "packagename")), "\n", sep = "")
   for (i in x) {
     print(i)
