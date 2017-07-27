@@ -65,7 +65,11 @@ create <- function(name, ...) {
 #' @export
 suggest <- function(path = ".", title = NULL) {
   if (is.null(title)) {
-    title <- unname(desc::desc(path)$get("Title"))
+    if (file.exists (path)) {
+      title <- unname(desc::desc(path)$get("Title"))
+    } else {
+      title <- path
+    }
     if (is.na(title)) {
       stop("No title found, please specify one with `title`.", call. = FALSE)
     }
