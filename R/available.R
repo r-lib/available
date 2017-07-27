@@ -66,7 +66,9 @@ create <- function(name, ...) {
 suggest <- function(path = ".", title = NULL) {
   if (is.null(title)) {
     if (file.exists (path)) {
-      title <- unname(desc::desc(path)$get("Title"))
+      title <- tryCatch (
+                         unname(desc::desc(path)$get("Title")),
+                         error = function (e) NA)
     } else {
       title <- path
     }
