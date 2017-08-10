@@ -4,7 +4,7 @@
 #' @importFrom jsonlite fromJSON
 #' @export
 available_on_github <- function(name) {
-  github_names <- gh_pkgs()
+  github_names <- gh_pkg(name)
 
   same <- tolower(name) == tolower(github_names[["pkg_name"]])
   if (any(same)) {
@@ -26,9 +26,11 @@ available_on_github <- function(name) {
     class = "available_github")
 }
 
-gh_pkgs <- memoise::memoise(function() {
-  res <- jsonlite::fromJSON("http://rpkg.gepuro.net/download")
-  res <- res$pkg_list
+gh_pkg <- memoise::memoise(function(pkg) {
+  res <- jsonlite::fromJSON(paste0("http://rpkg-api.gepuro.net/rpkg?q=", pkg))
+  if (length(res) == 0) {
+    return(list(pkg_name = "", pkg_org = ""))
+  }
   res$pkg_location <- res$pkg_name
   res$pkg_org <- vapply(strsplit(res$pkg_location, "/"), `[[`, character(1), 1)
   res$pkg_name <- vapply(strsplit(res$pkg_location, "/"), `[[`, character(1), 2)
