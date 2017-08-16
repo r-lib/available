@@ -49,18 +49,6 @@ print.available_query <- function(x, ...) {
   invisible(x)
 }
 
-#' @export
-print.available_silent_query <- function(x, ...) {
-  base_browser <- getOption("browser")
-  options(browser = "false")
-  on.exit(options(browser = base_browser))
-  cat(boxes::rule(attr(x, "packagename")), "\n", sep = "")
-  for (i in x) {
-    print(i)
-  }
-  invisible(x)
-}
-
 #' Check a new package name and possibly create it
 #'
 #' @inheritParams available
