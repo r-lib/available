@@ -4,13 +4,15 @@
 \alias{available}
 \title{See if a name is available}
 \usage{
-available(name, browse = TRUE, ...)
+available(name, browse = getOption("available.browse", TRUE), ...)
 }
 \arguments{
 \item{name}{Name of package to search}
 
 \item{browse}{Whether browser should be opened for all web links,
-default = TRUE.}
+default = TRUE. Default can be changed by setting
+\code{available.browse} in \code{.Rprofile}. See \link[base]{Startup}
+for more details.}
 
 \item{...}{Additional arguments passed to [utils::available.packages()].}
 }

@@ -7,11 +7,13 @@
 #' - Urban Dictionary
 #' @param name Name of package to search
 #' @param browse Whether browser should be opened for all web links,
-#'        default = TRUE.
+#'        default = TRUE. Default can be changed by setting
+#'        \code{available.browse} in \code{.Rprofile}. See \link[base]{Startup}
+#'        for more details.
 #' @param ... Additional arguments passed to [utils::available.packages()].
 #' @importFrom memoise memoise
 #' @export
-available <- function(name, browse = TRUE, ...) {
+available <- function(name, browse = getOption("available.browse", TRUE), ...) {
   res <- list(valid_package_name(name),
     available_on_cran(name, ...),
     available_on_bioc(name, ...),
@@ -29,13 +31,17 @@ available <- function(name, browse = TRUE, ...) {
           get_urban_data(term),
           sentiment(term))
           })))
-  structure(res, class = ifelse(browse,
-                     "available_query", "available_silent_query"),
-            packagename = name)
+  structure(res, class = "available_query", packagename = name,
+            browse = browse)
 }
 
 #' @export
 print.available_query <- function(x, ...) {
+  if (!attr(x, "browse")) {
+    base_browser <- getOption("browser")
+    options(browser = "false")
+    on.exit(options(browser = base_browser))
+  }
   cat(boxes::rule(attr(x, "packagename")), "\n", sep = "")
   for (i in x) {
     print(i)
