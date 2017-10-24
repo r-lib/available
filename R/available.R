@@ -42,7 +42,7 @@ print.available_query <- function(x, ...) {
     options(browser = "false")
     on.exit(options(browser = base_browser))
   }
-  cat(boxes::rule(attr(x, "packagename")), "\n", sep = "")
+  cat(cli::rule(attr(x, "packagename")), "\n", sep = "")
   for (i in x) {
     print(i)
   }
