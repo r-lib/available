@@ -33,5 +33,3 @@ Suggests:
   devtools,
   BiocInstaller,
   testthat
-Remotes:
-  r-lib/cli
