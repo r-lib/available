@@ -121,7 +121,7 @@ make_spelling_rlike <- function(word) {
     chars <- c(chars, "r")
   }
 
-  return(paste(unlist(chars), collapse = ""))
+  paste(unlist(chars), collapse = "")
 }
 
 #' function to add common, informative suffixes
@@ -151,7 +151,7 @@ common_suffixes <- function(title, name) {
   if (grepl("\\<markdown", title, ignore.case = TRUE)) {
     return(paste(c(name, "down"), collapse = ""))
   }
-  return(name)
+  name
 }
 
 #' Function that finds and returns the first acronym (all caps) in a text string
@@ -177,7 +177,7 @@ find_acronym <- function(title) {
   }
 
   # return the first acronym from the title
-  return(acronyms[1])
+  acronyms[1]
 }
 
 #' Suggest package name
@@ -197,5 +197,5 @@ namr <- function(title, acronym = FALSE, verb = FALSE, ...) {
     name <- paste(c(name, find_acronym(title)), collapse = "")
   }
   name <- common_suffixes(title, name)
-  return(name)
+  name
 }
