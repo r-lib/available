@@ -7,7 +7,7 @@
 namr(title, acronym = F, verb = F, ...)
 }
 \arguments{
-\item{title}{the package title or discription}
+\item{title}{the package title or description}
 
 \item{acronym}{whether to include an acronym (if there is one) in the title}
 

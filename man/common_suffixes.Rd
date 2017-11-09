@@ -7,7 +7,7 @@
 common_suffixes(title, name)
 }
 \arguments{
-\item{title}{the package title or discription}
+\item{title}{the package title or description}
 
 \item{name}{the single word that will be appended to}
 }
@@ -16,6 +16,6 @@ a single word with affix, if applicable
 }
 \description{
 Search a title for common terms (plot, vis..., viz..., markdown) and apply
-appropriate affixes to a given word as appliable.
+appropriate affixes to a given word as applicable.
 }
 \keyword{internal}

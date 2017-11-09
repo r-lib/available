@@ -138,9 +138,9 @@ make_spelling_rlike <- function(word){
 #' Add common suffixes
 #'
 #' Search a title for common terms (plot, vis..., viz..., markdown) and apply
-#' appropriate affixes to a given word as appliable.
+#' appropriate affixes to a given word as applicable.
 #'
-#' @param title the package title or discription
+#' @param title the package title or description
 #' @param name the single word that will be appended to
 #'
 #' @return a single word with affix, if applicable
@@ -175,7 +175,7 @@ common_suffixes <- function(title, name){
 #' Function that finds and returns the first acronym (all caps) in a text string
 #'
 #'
-#' @param title package title or discription
+#' @param title package title or description
 #'
 #' @return a single acronym, if present
 #' @keywords internal
@@ -205,7 +205,7 @@ find_acronym <- function(title){
 #'
 #'  
 #'
-#' @param title the package title or discription
+#' @param title the package title or description
 #' @param acronym whether to include an acronym (if there is one) in the title
 #' @param verb whether to prioritize using a verb in the package title
 #' 

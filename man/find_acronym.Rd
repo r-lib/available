@@ -7,7 +7,7 @@
 find_acronym(title)
 }
 \arguments{
-\item{title}{package title or discription}
+\item{title}{package title or description}
 }
 \value{
 a single acronym, if present
