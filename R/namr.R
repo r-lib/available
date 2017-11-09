@@ -1,6 +1,7 @@
 #' Pick word from title
 #'
-#' picks a single (hopefully informative) word from the provided title or package description
+#' picks a single (hopefully informative) word from the provided title or
+#' package description
 #'
 #' @param title text string to pick word from. Package title or description.
 #' @param verb whether you would like to prioritize returning a verb
@@ -80,15 +81,12 @@ pick_word_from_title <- function(title, verb = FALSE) {
 
 #' Spelling transformations
 #'
-#' This function takes in a single word and applies spelling transformations to make it more "r-like"
-#' and easier to Google
+#' This function takes in a single word and applies spelling transformations to
+#' make it more "r-like" and easier to Google
 #'
 #' @param word a single word to make more rlike
-#'
 #' @return a single word with a spelling transformation
 #' @keywords internal
-#'
-#'
 #' @export
 make_spelling_rlike <- function(word) {
   # convert string into vector of lowercase characters
@@ -126,7 +124,7 @@ make_spelling_rlike <- function(word) {
   return(paste(unlist(chars), collapse = ""))
 }
 
-#' Add common suffixes
+#' function to add common, informative suffixes
 #'
 #' Search a title for common terms (plot, vis..., viz..., markdown) and apply
 #' appropriate affixes to a given word as applicable.
@@ -136,9 +134,6 @@ make_spelling_rlike <- function(word) {
 #'
 #' @return a single word with affix, if applicable
 #' @keywords internal
-#'
-#'
-# function to add common, informative suffixes
 common_suffixes <- function(title, name) {
   # add "plot", "viz" or "vis" to the end of the package name if that appears in the title
   if (grepl("\\<tidy", title, ignore.case = TRUE)) {
@@ -161,13 +156,10 @@ common_suffixes <- function(title, name) {
 
 #' Function that finds and returns the first acronym (all caps) in a text string
 #'
-#'
 #' @param title package title or description
 #'
 #' @return a single acronym, if present
 #' @keywords internal
-#'
-#'
 #' @export
 find_acronym <- function(title) {
   # split string
@@ -190,12 +182,11 @@ find_acronym <- function(title) {
 
 #' Suggest package name
 #'
-#'
+#' Suggests a package name based on the package title or description.
 #'
 #' @param title the package title or description
 #' @param acronym whether to include an acronym (if there is one) in the title
 #' @param verb whether to prioritize using a verb in the package title
-#'
 #' @return a single word to use as a package title
 #' @keywords internal
 #'

@@ -2,7 +2,7 @@
 % Please edit documentation in R/namr.R
 \name{common_suffixes}
 \alias{common_suffixes}
-\title{Add common suffixes}
+\title{function to add common, informative suffixes}
 \usage{
 common_suffixes(title, name)
 }

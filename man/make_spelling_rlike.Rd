@@ -13,7 +13,7 @@ make_spelling_rlike(word)
 a single word with a spelling transformation
 }
 \description{
-This function takes in a single word and applies spelling transformations to make it more "r-like" 
-and easier to Google
+This function takes in a single word and applies spelling transformations to
+make it more "r-like" and easier to Google
 }
 \keyword{internal}

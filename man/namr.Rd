@@ -4,7 +4,7 @@
 \alias{namr}
 \title{Suggest package name}
 \usage{
-namr(title, acronym = F, verb = F, ...)
+namr(title, acronym = FALSE, verb = FALSE, ...)
 }
 \arguments{
 \item{title}{the package title or description}
@@ -17,6 +17,6 @@ namr(title, acronym = F, verb = F, ...)
 a single word to use as a package title
 }
 \description{
-Suggest package name
+Suggests a package name based on the package title or description.
 }
 \keyword{internal}

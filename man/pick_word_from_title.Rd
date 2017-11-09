@@ -4,7 +4,7 @@
 \alias{pick_word_from_title}
 \title{Pick word from title}
 \usage{
-pick_word_from_title(title, verb = F)
+pick_word_from_title(title, verb = FALSE)
 }
 \arguments{
 \item{title}{text string to pick word from. Package title or description.}
@@ -15,6 +15,7 @@ pick_word_from_title(title, verb = F)
 a single word from the title
 }
 \description{
-picks a single (hopefully informative) word from the provided title or package description
+picks a single (hopefully informative) word from the provided title or
+package description
 }
 \keyword{internal}
