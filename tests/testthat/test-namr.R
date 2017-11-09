@@ -31,6 +31,7 @@ describe("common_suffixes", {
 describe("namr", {
   it("works on real examples", {
     expect_equal(namr("A Package for Displaying Visual Scenes as They May Appear to an Animal with Lower Acuity"), "displayingrvis")
-
+    expect_equal(namr("Analysis of Ecological Data : Exploratory and Euclidean Methods in Environmental Sciences"), "ecologicalr")
+    expect_equal(namr("Population Assignment using Genetic, Non-Genetic or Integrated Data in a Machine Learning Framework"), "populationr")
   })
 })
