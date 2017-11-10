@@ -35,3 +35,5 @@ Suggests:
   devtools,
   BiocInstaller,
   testthat
+URL: https://github.com/ropenscilabs/available
+BugReports: https://github.com/ropenscilabs/available/issues
