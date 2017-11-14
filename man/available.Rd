@@ -23,3 +23,16 @@ Searches performed
 - Positive or negative sentiment
 - Urban Dictionary
 }
+\examples{
+\dontrun{
+# Check if the available package is available
+available("available")
+
+# You can disable opening of browser windows with browse = FALSE
+available("survival", browse = FALSE)
+
+# Or by setting a global option
+options(available.browse = FALSE)
+available("survival")
+}
+}

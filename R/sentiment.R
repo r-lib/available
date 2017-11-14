@@ -2,7 +2,7 @@
 #'
 #' @param name Name of package to search
 #' @export
-sentiment <- function(name) {
+get_sentiment <- function(name) {
   # Workaround for https://github.com/juliasilge/tidytext/issues/64
   ("base" %:::% "library")("tidytext")
   on.exit(detach("package:tidytext"))

@@ -2,17 +2,32 @@
 % Please edit documentation in R/available.R
 \name{suggest}
 \alias{suggest}
-\title{Suggest a title based for a development package}
+\title{Suggest a package name based on a development package title or description}
 \usage{
-suggest(path = ".", title = NULL)
+suggest(path = ".", field = c("Title", "Description"), text = NULL)
 }
 \arguments{
 \item{path}{Path to a existing package to extract the title from.}
 
-\item{title}{title string to search.}
+\item{field}{one of "Title" or "Description"}
+
+\item{text}{text string to search.}
 }
 \description{
 If the package you are using already has a title, simply pass the path to
 the package root in `path`. Otherwise use `title` to specify a potential
 title.
+}
+\examples{
+\dontrun{
+# Default will use the title from the current path.
+suggest()
+
+# Can also suggest based on the description
+suggest(field = "Description")
+}
+
+# Or by explictly using the text argument
+suggest(text =
+  "A Package for Displaying Visual Scenes as They May Appear to an Animal with Lower Acuity")
 }

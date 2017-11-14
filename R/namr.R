@@ -7,7 +7,6 @@
 #' @param verb whether you would like to prioritize returning a verb
 #' @return a single word from the title
 #' @keywords internal
-#' @export
 pick_word_from_title <- function(title, verb = FALSE) {
   # to lower case
   title <- tolower(title)
@@ -87,7 +86,6 @@ pick_word_from_title <- function(title, verb = FALSE) {
 #' @param word a single word to make more rlike
 #' @return a single word with a spelling transformation
 #' @keywords internal
-#' @export
 make_spelling_rlike <- function(word) {
   # convert string into vector of lowercase characters
   chars <- unlist(strsplit(tolower(word), ""))
@@ -160,7 +158,6 @@ common_suffixes <- function(title, name) {
 #'
 #' @return a single acronym, if present
 #' @keywords internal
-#' @export
 find_acronym <- function(title) {
   # split string
   title_vector <- unlist(strsplit(title, " "))
@@ -189,7 +186,6 @@ find_acronym <- function(title) {
 #' @param verb whether to prioritize using a verb in the package title
 #' @return a single word to use as a package title
 #' @keywords internal
-#'
 namr <- function(title, acronym = FALSE, verb = FALSE, ...) {
   name <- pick_word_from_title(title, verb = verb, ...)
   name <- make_spelling_rlike(name)

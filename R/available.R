@@ -12,6 +12,18 @@
 #'        for more details.
 #' @param ... Additional arguments passed to [utils::available.packages()].
 #' @importFrom memoise memoise
+#' @examples
+#' \dontrun{
+#' # Check if the available package is available
+#' available("available")
+#'
+#' # You can disable opening of browser windows with browse = FALSE
+#' available("survival", browse = FALSE)
+#'
+#' # Or by setting a global option
+#' options(available.browse = FALSE)
+#' available("survival")
+#' }
 #' @export
 available <- function(name, browse = getOption("available.browse", TRUE), ...) {
   res <- list(valid_package_name(name),
@@ -29,7 +41,7 @@ available <- function(name, browse = getOption("available.browse", TRUE), ...) {
           get_wikipidia(term),
           get_wiktionary(term),
           get_urban_data(term),
-          sentiment(term))
+          get_sentiment(term))
           })))
   structure(res, class = "available_query", packagename = name,
             browse = browse)
@@ -65,26 +77,40 @@ create <- function(name, ...) {
   }
 }
 
-#' Suggest a title based for a development package
+#' Suggest a package name based on a development package title or description
 #'
 #' If the package you are using already has a title, simply pass the path to
 #' the package root in `path`. Otherwise use `title` to specify a potential
 #' title.
 #' @param path Path to a existing package to extract the title from.
-#' @param title title string to search.
+#' @param field one of "Title" or "Description"
+#' @param text text string to search.
 #' @export
-suggest <- function(path = ".", title = NULL) {
-  if (is.null(title)) {
+#' @examples
+#' \dontrun{
+#' # Default will use the title from the current path.
+#' suggest()
+#'
+#' # Can also suggest based on the description
+#' suggest(field = "Description")
+#' }
+#'
+#' # Or by explictly using the text argument
+#' suggest(text =
+#'   "A Package for Displaying Visual Scenes as They May Appear to an Animal with Lower Acuity")
+suggest <- function(path = ".",  field = c("Title", "Description"), text = NULL) {
+  if (is.null(text)) {
     if (file.exists (path)) {
-      title <- tryCatch(error = function (e) NA,
-        unname(desc::desc(path)$get("Title")))
+      field <- match.arg(field)
+      text <- tryCatch(error = function (e) NA,
+        unname(desc::desc(path)$get(field)))
     } else {
-      title <- path
+      text <- path
     }
-    if (is.na(title)) {
-      stop("No title found, please specify one with `title`.", call. = FALSE)
+    if (is.na(text)) {
+      stop("No text found, please specify one with `text`.", call. = FALSE)
     }
   }
 
-  pick_word_from_title(title)
+  namr(text)
 }
