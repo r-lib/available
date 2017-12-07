@@ -45,11 +45,11 @@ Generate new package names from titles
 
 ``` r
 library(available)
-suggest(title = "Client for New York Times APIs")
-#> [1] "times"
+suggest(text = "Client for New York Times APIs")
+#> [1] "timesr"
 
-suggest(title = "An R Interface to SciDB")
-#> [1] "scidb"
+suggest(text = "An R Interface to SciDB")
+#> [1] "scidbr"
 ```
 
 ### Rstudio Support
