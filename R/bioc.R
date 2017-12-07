@@ -9,8 +9,7 @@ available_on_bioc <- function(name, repos = NULL, ...) {
       repos <- c(
         BioCsoft = "https://bioconductor.org/packages/release/bioc",
         BioCann = "https://bioconductor.org/packages/release/data/annotation",
-        BioCexp = "https://bioconductor.org/packages/release/data/experiment",
-        BioCextra = "https://bioconductor.org/packages/release/extra")
+        BioCexp = "https://bioconductor.org/packages/release/data/experiment")
     }
   }
   bioc_names <- rownames(available_packages(repos = repos, ...))
