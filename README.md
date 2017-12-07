@@ -1,6 +1,6 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-[![Travis-CI Build Status](https://travis-ci.org/ropenscilabs/available.svg?branch=master)](https://travis-ci.org/ropenscilabs/available)
+[![Travis-CI Build Status](https://travis-ci.org/ropenscilabs/available.svg?branch=master)](https://travis-ci.org/ropenscilabs/available) [![CRAN status](http://www.r-pkg.org/badges/version/available)](https://cran.r-project.org/package=available)
 <p align="center">
 <img src="http://i.imgur.com/1KZn3Z5.jpg" alt="xzibit">
 </p>
@@ -19,7 +19,13 @@ available
 Installation
 ------------
 
-You can install available from GitHub with:
+You can install available from CRAN with:
+
+``` r
+install.packages("availabe")
+```
+
+Or the development version from GitHub with:
 
 ``` r
 # install.packages("devtools")
