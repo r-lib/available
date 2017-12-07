@@ -59,11 +59,4 @@ suggest(text = "An R Interface to SciDB")
 ```
 
 ### Rstudio Support
-In order to have color in the RStudio terminal you need a [daily build of
-RStudio](https://dailies.rstudio.com/) and development versions of the
-**rstudioapi** and **crayon** packages.
-
-```r
-devtools::install_github("rstudio/rstudioapi")
-devtools::install_github("gaborcsardi/crayon")
-```
+RStudio versions 1.1 and later support color in the terminal.
