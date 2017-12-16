@@ -33,7 +33,7 @@ knitr::opts_chunk$set(
 You can install available from CRAN with:
 
 ```{r CRAN-installation, eval = FALSE}
-install.packages("availabe")
+install.packages("available")
 ```
 
 Or the development version from GitHub with:
