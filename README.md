@@ -22,7 +22,7 @@ Installation
 You can install available from CRAN with:
 
 ``` r
-install.packages("availabe")
+install.packages("available")
 ```
 
 Or the development version from GitHub with:
