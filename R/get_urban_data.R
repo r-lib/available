@@ -1,6 +1,7 @@
 #' get urban dictionary definitions and tags
 #'
 #' @param name Name of package to search
+#' @export
 get_urban_data<- function(name) {
   term <- tryCatch(as.data.frame(udapi::get_term(name)),
                    error = function(e) e)
@@ -9,7 +10,6 @@ get_urban_data<- function(name) {
 }
 
 #' @export
-
 format.available_urban <- function(x, ...) {
   res <- character()
   out <- function(...) res <<- c(res, paste(...))
@@ -42,7 +42,6 @@ format.available_urban <- function(x, ...) {
 }
 
 #' @export
-
 print.available_urban <- function(x, ...) {
   cat(format(x, ...))
   invisible(x)
