@@ -24,7 +24,7 @@ name_to_search_terms <- function(name){
   search_terms <- c(setdiff(search_terms, c("r","R","", name)), name)
 
   #remove trailing r that is not preceded by a vowel
-  search_terms <- sub("(?![aeiou])[Rr]$", "", search_terms, perl = TRUE)
+  search_terms <- sub("(?<![aeiou])[Rr]$", "", search_terms, perl = TRUE)
 
   unique(search_terms)
 }
