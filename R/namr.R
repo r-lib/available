@@ -34,7 +34,7 @@ pick_word_from_title <- function(title, verb = FALSE) {
 
   word_vector <- word_vector[!word_vector %in% c(english_stop_words)]
 
-  word_vector <- word_vector[!grepl(glue::collapse(R_stop_words, "|"), word_vector)]
+  word_vector <- word_vector[!grepl(glue_collapse(R_stop_words, "|"), word_vector)]
 
   # remove very long words (> 15 characters)
   # remove very short words (< 5 characters)
@@ -119,7 +119,7 @@ make_spelling_rlike <- function(word) {
     chars <- c(chars, "r")
   }
 
-  paste(unlist(chars), collapse = "")
+  glue_collapse(unlist(chars))
 }
 
 #' function to add common, informative suffixes
@@ -135,19 +135,19 @@ make_spelling_rlike <- function(word) {
 common_suffixes <- function(title, name) {
   # add "plot", "viz" or "vis" to the end of the package name if that appears in the title
   if (grepl("\\<tidy", title, ignore.case = TRUE)) {
-    return(paste(c("tidy", name), collapse = ""))
+    return(glue_collapse(c("tidy", name)))
   }
   if (grepl("\\<viz", title, ignore.case = TRUE)) {
-    return(paste(c(name, "viz"), collapse = ""))
+    return(glue_collapse(c(name, "viz")))
   }
   if (grepl("\\<vis", title, ignore.case = TRUE)) {
-    return(paste(c(name, "vis"), collapse = ""))
+    return(glue_collapse(c(name, "vis")))
   }
   if (grepl("\\<plot", title, ignore.case = TRUE)) {
-    return(paste(c(name, "plot"), collapse = ""))
+    return(glue_collapse(c(name, "plot")))
   }
   if (grepl("\\<markdown", title, ignore.case = TRUE)) {
-    return(paste(c(name, "down"), collapse = ""))
+    return(glue_collapse(c(name, "down")))
   }
   name
 }
@@ -190,7 +190,7 @@ namr <- function(title, acronym = FALSE, verb = FALSE, ...) {
   name <- pick_word_from_title(title, verb = verb, ...)
   name <- make_spelling_rlike(name)
   if (acronym) {
-    name <- paste(c(name, find_acronym(title)), collapse = "")
+    name <- glue_collapse(c(name, find_acronym(title)))
   }
   name <- common_suffixes(title, name)
   name

@@ -17,7 +17,7 @@ bad_words <- memoise::memoise(function() {
 #' @seealso See \url{https://github.com/web-mech/badwords}
 get_bad_words <- function(name) {
   # check each bad word to see if in package name
-  bad <- grepl(glue::collapse(bad_words(), "|"), name)
+  bad <- grepl(glue_collapse(bad_words(), "|"), name)
 
   structure(name[bad], class = "available_bad_words")
 }
@@ -32,7 +32,7 @@ format.available_bad_words <- function(x, ...) {
     if (length(x) == 0) {
       good(clisymbols::symbol$tick)
     } else {
-      bad(glue::collapse(x, sep = ", ", last = " and "))
+      bad(glue_collapse(x, sep = ", ", last = " and "))
     },
     "\n"
   )

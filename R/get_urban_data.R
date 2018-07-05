@@ -18,7 +18,7 @@ format.available_urban <- function(x, ...) {
 
   if (inherits(x[[1]], "error")) {
     out("  Not found.\n")
-    return(paste(res, collapse = ""))
+    return(glue_collapse(res))
   }
 
   ## Format first definition
@@ -29,7 +29,7 @@ format.available_urban <- function(x, ...) {
 
   ## Tags:
   if (! inherits(x[[2]], "error")) {
-    tags <- paste(x[[2]], collapse = " ")
+    tags <- glue_collapse(x[[2]], " ")
     tags <- strwrap(tags, exdent = 2, simplify = TRUE)
     out("\n  Tags: ", mark_bad_words(tags), sep = "")
   }
@@ -38,7 +38,7 @@ format.available_urban <- function(x, ...) {
   out("\n  ", crayon::blue(x[[1]]$permalink[1]), sep = "")
   out("\n")
 
-  paste(res, collapse = "")
+  glue_collapse(res)
 }
 
 #' @export

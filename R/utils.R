@@ -13,3 +13,11 @@ yes_no <- function(x) {
 fix_windows_nl <- function(x) {
   gsub("\r\n", "\n", x)
 }
+
+glue_collapse <- function(...) {
+  if (utils::packageVersion("glue") > "1.2.0") {
+    utils::getFromNamespace("glue_collapse", "glue")(...)
+  } else {
+    utils::getFromNamespace("collapse", "glue")(...)
+  }
+}
