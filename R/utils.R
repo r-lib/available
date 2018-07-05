@@ -21,3 +21,10 @@ glue_collapse <- function(...) {
     utils::getFromNamespace("collapse", "glue")(...)
   }
 }
+
+compare.glue <- function(x, y) {
+  if (identical(class(y), "character")) {
+    class(x) <- NULL
+  }
+  NextMethod("compare")
+}
