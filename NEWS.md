@@ -5,7 +5,6 @@
 * No longer trimming r or R when proceeded by a vowel from search terms, as originally intended (#35).
 * Support for upcoming glue 1.3.0 release
 
-_words
 # available 1.0.0
 
 * Initial release
