@@ -1,6 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 [![Travis-CI Build Status](https://travis-ci.org/ropenscilabs/available.svg?branch=master)](https://travis-ci.org/ropenscilabs/available) [![CRAN status](http://www.r-pkg.org/badges/version/available)](https://cran.r-project.org/package=available)
+[![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 <p align="center">
 <img src="http://i.imgur.com/1KZn3Z5.jpg" alt="xzibit">
 </p>
