@@ -2,6 +2,7 @@
 
 * Add dialog when run interactively asking if urban dictionary results should
   be included, as they can potentially contain offensive results (#41).
+* Use BiocManager for compatibility with future versions of R.
 
 # available 1.0.1
 
