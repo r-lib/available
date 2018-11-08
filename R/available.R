@@ -35,13 +35,13 @@ available <- function(name, browse = getOption("available.browse", TRUE), ...) {
     unlist(recursive = FALSE,
       lapply(terms,
       function(term) {
-        list(
+        compact(list(
           get_bad_words(term),
           get_abbreviation(term),
           get_wikipidia(term),
           get_wiktionary(term),
           get_urban_data(term),
-          get_sentiment(term))
+          get_sentiment(term)))
           })))
   structure(res, class = "available_query", packagename = name,
             browse = browse)

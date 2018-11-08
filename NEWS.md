@@ -1,3 +1,8 @@
+# available 1.0.2
+
+* Add dialog when run interactively asking if urban dictionary results should
+  be included, as they can potentially contain offensive results (#41).
+
 # available 1.0.1
 
 * Filter own repo from GitHub results (#21).

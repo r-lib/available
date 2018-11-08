@@ -3,6 +3,13 @@
 #' @param name Name of package to search
 #' @export
 get_urban_data<- function(name) {
+  if (interactive()) {
+    cat("Urban Dictionary can contain potentially offensive results,\n  should they be included? [Y]es / [N]o:\n")
+    result <- tryCatch(scan("", what = "character", quiet = TRUE, nlines = 1), error = function(x) "N")
+    if (!identical(toupper(result), "Y")) {
+      return(NULL)
+    }
+  }
   term <- tryCatch(as.data.frame(udapi::get_term(name)),
                    error = function(e) e)
   tags <- tryCatch(udapi::get_tags(name)$tags, error = function(e) e)

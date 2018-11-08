@@ -28,3 +28,8 @@ compare.glue <- function(x, y) {
   }
   NextMethod("compare")
 }
+
+compact <- function(x) {
+  len <- lengths(x)
+  x[!len == 0]
+}
