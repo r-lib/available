@@ -12,3 +12,6 @@ get_urban_data(name)
 \description{
 get urban dictionary definitions and tags
 }
+\note{
+Urban Dictionary can contain potentially offensive results
+}
