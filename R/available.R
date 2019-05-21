@@ -113,35 +113,20 @@ suggest <- function(path = ".",  field = c("Title", "Description"), text = NULL)
 
 
 check_online_terms <- function(term, urban = TRUE) {
-  if (urban) {
-    compact(list(
-      get_bad_words(term),
+      compact(list(get_bad_words(term),
       get_abbreviation(term),
       get_wikipidia(term),
       get_wiktionary(term),
-      get_urban_data(term),
+      if (urban) get_urban_data(term),
       get_sentiment(term)))
-  } else {
-    compact(list(
-      get_bad_words(term),
-      get_abbreviation(term),
-      get_wikipidia(term),
-      get_wiktionary(term),
-      get_sentiment(term)))
-  }
 }
 
 
 check_urban <- function() {
-  if (interactive()) {
+  if (!interactive()) {
+    return(TRUE)
+  }
     cat("Urban Dictionary can contain potentially offensive results,\n  should they be included? [Y]es / [N]o:\n")
     result <- tryCatch(scan("", what = "character", quiet = TRUE, nlines = 1), error = function(x) "N")
-    if (!identical(toupper(result), "Y")) {
-      TRUE
-    } else {
-      FALSE
-    }
-  } else {
-    TRUE
-  }
+    identical(toupper(result), "Y")
 }
