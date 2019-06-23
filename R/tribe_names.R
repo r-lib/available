@@ -3,9 +3,9 @@
 tribe_names <- memoise::memoise(function() {
   url <- "https://www.bia.gov/tribal-leaders-csv"
 
-
 stop_words_in_tribe_names <-
-  c("Tribe of Old Harbor",
+  tolower(
+    c("Tribe of Old Harbor",
     "Village",
     "River Band",
     "Mills",
@@ -150,17 +150,20 @@ stop_words_in_tribe_names <-
     "Lions",
     "ding",
      "Boise" ,
+    "age",
+    "rampart",
     "-",
     "\\.",
     "'",
     "&",
     "\\(",
     "\\)",
-    " ")
+    " "))
 
-  words <- read.csv(url)[,2]
+  # get list and convert to lower case
+  words <- tolower(read.csv(url)[,2])
   # remove stop words
-  words <- tolower(sort(gsub(paste0(stop_words_in_tribe_names, collapse = "|"), "", words)))
+  words <- gsub(paste0(stop_words_in_tribe_names, collapse = "|"), "", words)
   # remove non-alphanumerics
   words <- gsub("[^[:alnum:]]", "", words)
   # remove blank and short strings
