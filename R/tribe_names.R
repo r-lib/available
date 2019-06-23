@@ -3,7 +3,164 @@
 tribe_names <- memoise::memoise(function() {
   url <- "https://www.bia.gov/tribal-leaders-csv"
 
-  words <- jsonlite::fromJSON(url)[[1]]
+
+stop_words_in_tribe_names <-
+  c("Tribe of Old Harbor",
+    "Village",
+    "River Band",
+    "Mills",
+    "Creek",
+    "Lagoon",
+    "Pine",
+    "Sandy",
+    "Valley",
+    "Lake",
+    "Grande",
+    "Nation of New York",
+    "Heights",
+    "Bay",
+    "Springs",
+    "Grand",
+    "Tribe",
+    "Nation",
+    "Eastern",
+    "Fort",
+    "of Texas",
+    "of Kansas",
+    "of Oklahoma",
+    "King",
+    "Little",
+    "Lower",
+    "Indian Nation",
+    "Indian Tribe",
+    "Point",
+    "IRA",
+    "Northern",
+    "Northwestern",
+    "of Utah",
+    "Indian Township",
+    "Pleasant Point",
+    "Bay",
+    "of Nebraska",
+    "Prairie",
+    "Pueblo of",
+    "Chapter",
+    "Nation of Missouri in Kansas and Nebraska",
+    "Oklahoma",
+    "United",
+    "Pass",
+    "Big",
+    "Bad",
+    "Arctic",
+    "Crow",
+    "Cow",
+    "Dry",
+    "Elk",
+    "Iowa",
+    "River",
+    "Hope",
+    "Pilot",
+    "Ruby",
+    "Ottawa",
+    "Band",
+    "Pyramid",
+    "Skull",
+    "Upper",
+    "Harbor",
+    "Inc",
+    "of Mississippi",
+    "Mountain",
+    "Turtle",
+    "South",
+    "Southern",
+    "Red",
+    "Round" ,
+    "Salt" ,
+    "Bear",
+    "Berry",
+    "Beaver",
+    "Augustine",
+    "California",
+    "Blue" ,
+    "Bishop",
+    "Cold",
+    "Craig" ,
+    "Forest",
+    "County",
+    "Lime",
+    "Lone",
+    "Mesa",
+     "Miami" ,
+    "Leech",
+    "Minnesota",
+    "Barrow",
+    "Eagle",
+    "False" ,
+    "Lay" ,
+    "New",
+    "Omaha",
+    "Wisconsin",
+    "Dot",
+    "Enterprise" ,
+    "Summit",
+    "Table",
+    "Spirit",
+    "Three",
+    "Affiliated",
+    "White",
+    "Devil",
+    "Crooked" ,
+    "Stony",
+    "Twin",
+    "Hills",
+    "Island",
+    "Jackson",
+    "Salmon" ,
+    "Absentee",
+    "Citizen",
+    "Island",
+     "Manchester",
+    "Earth",
+    "Mississippi",
+    "Council",
+    "Walker",
+    "Quartz",
+    "Platinum",
+    "Pit",
+    "Station",
+    "Petersburg",
+    "Wales",
+    "Traverse",
+    "Slope",
+    "Confederated",
+    "Circle",
+    "Indians Division",
+    "Indian Colony",
+    "and Sioux",
+    "Chicken",
+    "Ranch",
+    "Federated Indians of",
+    "Mission",
+    "Port",
+    "Cliff",
+    "wood",
+    "Nelson",
+    "Independence" ,
+    "Colorado",
+    "Lions",
+    "ding",
+     "Boise" ,
+    "-",
+    "\\.",
+    "'",
+    "&",
+    "\\(",
+    "\\)",
+    " ")
+
+  words <- read.csv(url)[,2]
+  # remove stop words
+  words <- tolower(sort(gsub(paste0(stop_words_in_tribe_names, collapse = "|"), "", words)))
   # remove non-alphanumerics
   words <- gsub("[^[:alnum:]]", "", words)
   # remove blank and short strings
@@ -30,7 +187,7 @@ format.available_tribe_names <- function(x, ...) {
   good <- crayon::green
   bad <- crayon::combine_styles(crayon::bgRed, crayon::white)
   paste0(
-    crayon::bold("Tribe names: "),
+    crayon::bold("Indigenous tribe names (recommend to not to use): "),
     if (length(x) == 0) {
       good(clisymbols::symbol$tick)
     } else {
@@ -47,7 +204,7 @@ print.available_tribe_names <- function(x, ...) {
   invisible(x)
 }
 
-mark_bad_words <- function(text, marker = NULL) {
+mark_tribe_names <- function(text, marker = NULL) {
 
   if (is.null(marker)) {
     marker <- crayon::combine_styles(crayon::white, crayon::bgRed)
@@ -70,7 +227,7 @@ mark_tribe_names1 <- function(text1, marker) {
   words <- substring(text1, start, end)
   stemmed <- SnowballC::wordStem(words, language = "english")
 
-  bad <- words %in% tribe_names() | stemmed %in% tribe_names()
+  tribe <- words %in% tribe_names() | stemmed %in% tribe_names()
   regmatches(text1, word_pos) <- list(ifelse(
     tribe, marker(words), words
   ))
