@@ -1,15 +1,3 @@
-This is a resubmission. In this version I have added examples for the `available()`
-and `suggest()` functions.
-
-It was noted in the previous submission that running `available()` opens
-a handful of browser windows.
-
-Users can disable this by passing `browse = FALSE` to
-`available()` or by setting `options("available.browse" = FALSE)` to disable
-them globally. I feel having this option default to `TRUE` is the correct
-choice as inspecting the information in the opened pages is one of the primary
-purposes of the package.
-
 ## Test environments
 * local OS X install, R 3.4.2
 * ubuntu 14.04 (on travis-ci), R 3.4.2
@@ -19,4 +7,7 @@ purposes of the package.
 
 0 errors | 0 warnings | 1 note
 
-* This is a new release.
+* Package suggested but not available for checking: ‘BiocInstaller’ Package
+
+This note cannot be removed as BiocInstaller is unavailable in R 3.6, but
+needed for prior support of R versions prior to 3.5.
