@@ -1,3 +1,7 @@
+# available (development version)
+
+* `create()` now uses `usethis::create_package()` rather than the deprecated `devtools::create()`.
+
 # available 1.0.2
 
 * Add dialog when run interactively asking if urban dictionary results should
