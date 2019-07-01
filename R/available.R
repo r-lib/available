@@ -73,7 +73,7 @@ create <- function(name, ...) {
     if (!requireNamespace("usethis")) {
       stop("`usethis` must be installed to create a package", call. = FALSE)
     }
-    usethis::create(name, ...)
+    usethis::create_package(name, ...)
   }
 }
 
