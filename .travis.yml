@@ -1,8 +1,7 @@
 # R for travis: see documentation at https://docs.travis-ci.com/user/languages/r
 
 env:
-  - R_REMOTES_NO_ERRORS_FROM_WARNINGS=true
-  - _R_CHECK_FORCE_SUGGESTS_=false
+  - R_REMOTES_NO_ERRORS_FROM_WARNINGS=true _R_CHECK_FORCE_SUGGESTS_=false
 
 language: R
 sudo: false
