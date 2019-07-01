@@ -1,4 +1,4 @@
-# available (development version)
+# available 1.0.3
 
 * `BiocManager` is now preferred to `BiocInstaller` if both are installed (#44, @luciorq).
 
