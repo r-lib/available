@@ -64,7 +64,7 @@ print.available_query <- function(x, ...) {
 #' Check a new package name and possibly create it
 #'
 #' @inheritParams available
-#' @param ... Additional arguments passed to [devtools::create()].
+#' @param ... Additional arguments passed to [usethis::create_package()].
 create <- function(name, ...) {
   print(available(name))
 
@@ -73,7 +73,7 @@ create <- function(name, ...) {
     if (!requireNamespace("devtools")) {
       stop("`devtools` must be installed to create a package", call. = FALSE)
     }
-    devtools::create(name, ...)
+    usethis::create(name, ...)
   }
 }
 

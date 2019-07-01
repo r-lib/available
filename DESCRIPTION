@@ -1,6 +1,6 @@
 Package: available
 Title: Check if the Title of a Package is Available, Appropriate and Interesting
-Version: 1.0.2
+Version: 1.0.2.9000
 Authors@R: c(
     person("Carl", "Ganz", role = c("aut")),
     person("Gábor", "Csárdi", , "csardi.gabor@gmail.com", role = c("aut")),
@@ -15,7 +15,7 @@ Depends: R (>= 3.3.0)
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 6.0.1
+RoxygenNote: 6.1.0
 Imports:
   cli,
   clisymbols,
