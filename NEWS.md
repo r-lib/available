@@ -1,5 +1,7 @@
 # available (development version)
 
+* `BiocManager` is now preferred to `BiocInstaller` if both are installed (#44, @luciorq).
+
 * `create()` now uses `usethis::create_package()` rather than the deprecated `devtools::create()`.
 
 # available 1.0.2
