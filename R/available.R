@@ -70,8 +70,8 @@ create <- function(name, ...) {
 
   ans <- yesno::yesno(glue::glue("Create package `{name}`?"))
   if (isTRUE(ans)) {
-    if (!requireNamespace("devtools")) {
-      stop("`devtools` must be installed to create a package", call. = FALSE)
+    if (!requireNamespace("usethis")) {
+      stop("`usethis` must be installed to create a package", call. = FALSE)
     }
     usethis::create(name, ...)
   }
