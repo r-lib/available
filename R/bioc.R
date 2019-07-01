@@ -2,10 +2,10 @@
 #' @export
 available_on_bioc <- function(name, repos = NULL, ...) {
   if (is.null(repos)) {
-    if (requireNamespace("BiocInstaller", quietly = TRUE)) {
-      repos <- BiocInstaller::biocinstallRepos()
-    } else if (requireNamespace("BiocManager", quietly = TRUE)) {
+    if (requireNamespace("BiocManager", quietly = TRUE)) {
       repos <- BiocManager::repositories()
+    } else if (requireNamespace("BiocInstaller", quietly = TRUE)) {
+      repos <- BiocInstaller::biocinstallRepos()
     } else {
       # Search on latest bioc release
       repos <- c(
