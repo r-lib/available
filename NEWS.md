@@ -1,3 +1,7 @@
+# available 1.0.4
+
+* Tests requiring network access are not skipped on CRAN.
+
 # available 1.0.3
 
 * `BiocManager` is now preferred to `BiocInstaller` if both are installed (#44, @luciorq).
