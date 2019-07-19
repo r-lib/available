@@ -37,6 +37,7 @@ available <- function(name, browse = getOption("available.browse", TRUE), ...) {
       function(term) {
         compact(list(
           get_bad_words(term),
+          get_tribe_names(term),
           get_abbreviation(term),
           get_wikipidia(term),
           get_wiktionary(term),

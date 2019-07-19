@@ -7,3 +7,6 @@
 ^README-.*\.png$
 ^cran-comments\.md$
 ^script\.R$
+^available\.Rcheck$
+^available.*\.tar\.gz$
+^available.*\.tgz$

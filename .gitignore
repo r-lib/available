@@ -3,3 +3,6 @@
 .RData
 README.html
 script.R
+available.Rcheck/
+available*.tar.gz
+available*.tgz
