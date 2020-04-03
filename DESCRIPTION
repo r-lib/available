@@ -1,6 +1,6 @@
 Package: available
 Title: Check if the Title of a Package is Available, Appropriate and Interesting
-Version: 1.0.3
+Version: 1.0.4
 Authors@R: c(
     person("Carl", "Ganz", role = c("aut")),
     person("Gábor", "Csárdi", , "csardi.gabor@gmail.com", role = c("aut")),
