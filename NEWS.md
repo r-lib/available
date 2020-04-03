@@ -1,3 +1,5 @@
+# available (development version)
+
 # available 1.0.4
 
 * Tests requiring network access are now skipped on CRAN.
