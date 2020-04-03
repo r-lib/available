@@ -1,6 +1,6 @@
 # available 1.0.4
 
-* Tests requiring network access are not skipped on CRAN.
+* Tests requiring network access are now skipped on CRAN.
 
 # available 1.0.3
 
