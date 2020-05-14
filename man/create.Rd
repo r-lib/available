@@ -9,7 +9,7 @@ create(name, ...)
 \arguments{
 \item{name}{Name of package to search}
 
-\item{...}{Additional arguments passed to [usethis::create_package()].}
+\item{...}{Additional arguments passed to \code{\link[usethis:create_package]{usethis::create_package()}}.}
 }
 \description{
 Check a new package name and possibly create it
