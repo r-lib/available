@@ -1,5 +1,7 @@
 # available (development version)
 
+* `get_wikipidia()` renamed to `get_wikipedia()`.
+
 # available 1.0.4
 
 * Tests requiring network access are now skipped on CRAN.
