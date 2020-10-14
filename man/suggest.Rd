@@ -27,7 +27,7 @@ suggest()
 suggest(field = "Description")
 }
 
-# Or by explictly using the text argument
+# Or by explicitly using the text argument
 suggest(text =
   "A Package for Displaying Visual Scenes as They May Appear to an Animal with Lower Acuity")
 }
