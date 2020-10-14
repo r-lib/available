@@ -15,7 +15,7 @@ Depends: R (>= 3.3.0)
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 7.1.1
+RoxygenNote: 7.1.0
 Imports:
   cli,
   clisymbols,
@@ -37,3 +37,4 @@ Suggests:
   testthat
 URL: https://github.com/ropenscilabs/available
 BugReports: https://github.com/ropenscilabs/available/issues
+Roxygen: list(markdown = TRUE)
