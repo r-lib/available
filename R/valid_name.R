@@ -11,7 +11,7 @@ valid_package_name <- function(name) {
   res <- if (tolower(name) == "r") {
     FALSE
   } else {
-    grepl(valid_package_name_regexp, name)
+    grepl(glue::glue("^{valid_package_name_regexp}$"), name)
   }
   structure(res, class = "available_valid_name")
 }
