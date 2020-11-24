@@ -32,7 +32,6 @@ Imports:
   yesno
 Suggests:
   usethis,
-  BiocInstaller,
   BiocManager,
   testthat
 URL: https://github.com/ropenscilabs/available
