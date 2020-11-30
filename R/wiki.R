@@ -2,7 +2,7 @@
 #'
 #' @inheritParams available
 #' @export
-get_wikipidia <- function(name) {
+get_wikipedia <- function(name) {
   # TODO: handle case when we can't open browser
   url <- paste0("https://en.wikipedia.org/wiki/", name)
 
@@ -23,7 +23,7 @@ print.available_wikipedia <- function(x, ...) {
   invisible(x)
 }
 
-#' @rdname get_wikipidia
+#' @rdname get_wikipedia
 #' @export
 get_wiktionary <- function(name) {
   # TODO: handle case when we can't open browser

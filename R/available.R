@@ -115,7 +115,7 @@ suggest <- function(path = ".",  field = c("Title", "Description"), text = NULL)
 check_online_terms <- function(term, urban = TRUE) {
       compact(list(get_bad_words(term),
       get_abbreviation(term),
-      get_wikipidia(term),
+      get_wikipedia(term),
       get_wiktionary(term),
       if (urban) get_urban_data(term),
       get_sentiment(term)))
