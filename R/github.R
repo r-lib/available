@@ -29,14 +29,35 @@ available_on_github <- function(name) {
 }
 
 gh_pkg <- memoise::memoise(function(pkg) {
-  res <- jsonlite::fromJSON(paste0("http://rpkg-api.gepuro.net/rpkg?q=", pkg))
-  if (length(res) == 0) {
-    return(data.frame(pkg_name = character(), pkg_location = character(), pkg_org = character()))
-  }
-  res$pkg_location <- res$pkg_name
-  res$pkg_org <- vapply(strsplit(res$pkg_location, "/"), `[[`, character(1), 1)
-  res$pkg_name <- vapply(strsplit(res$pkg_location, "/"), `[[`, character(1), 2)
-  res[!(res$pkg_org == "cran" | res$pkg_org == "Bioconductor-mirror"), ]
+  tryCatch({
+    rpkg_res <- jsonlite::fromJSON(paste0("http://rpkg-api.gepuro.net/rpkg?q=", pkg))
+    if (length(rpkg_res) == 0) {
+      return(data.frame(pkg_name = character(), pkg_location = character(), pkg_org = character()))
+    }
+    rpkg_res$pkg_location <- rpkg_res$pkg_name
+    rpkg_res$pkg_org <- vapply(strsplit(rpkg_res$pkg_location, "/"), `[[`, character(1), 1)
+    rpkg_res$pkg_name <- vapply(strsplit(rpkg_res$pkg_location, "/"), `[[`, character(1), 2)
+    rpkg_res[!(rpkg_res$pkg_org == "cran" | rpkg_res$pkg_org == "Bioconductor-mirror"), ]
+  },
+  error = function(cond){
+    message("Got an error trying to use rpkg-api, trying GitHub's api")
+    message("Here's the original error message:")
+    message(paste0(cond, "\n"))
+
+    gh_api_res <- jsonlite::fromJSON(paste0("https://api.github.com/search/repositories?q=",
+                                            pkg,"+language:R&sort=stars&order=desc"))$items
+
+    if (length(gh_api_res) == 0) {
+      return(data.frame(pkg_name = character(), pkg_location = character(), pkg_org = character()))
+    }
+
+    gh_res <- data.frame(pkg_location = gh_api_res$full_name)
+    gh_res$pkg_org <- vapply(strsplit(gh_res$pkg_location, "/"), `[[`, character(1), 1)
+    gh_res$pkg_name <- vapply(strsplit(gh_res$pkg_location, "/"), `[[`, character(1), 2)
+    gh_res[!(gh_res$pkg_org == "cran" | gh_res$pkg_org == "Bioconductor-mirror"), ]
+
+
+  })
 })
 
 #' @export
