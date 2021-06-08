@@ -23,6 +23,12 @@
 #' # Or by setting a global option
 #' options(available.browse = FALSE)
 #' available("survival")
+#'
+#' # Test if a name is available in a non-default CRAN repository by setting
+#' # the `repos` argument
+#' available_on_cran("semaforos")
+#'
+#' available_on_cran("semaforos", repos = "https://bisaloo.r-universe.dev")
 #' }
 #' @export
 available <- function(name, browse = getOption("available.browse", TRUE), ...) {

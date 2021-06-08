@@ -3,6 +3,13 @@
 #' @param name Name of package to search
 #' @param ... Additional arguments passed to [utils::available.packages()].
 #' @inheritParams utils::available.packages
+#'
+#' @examples
+#' available_on_cran("semaforos")
+#'
+#' # Test if this name is available in a non-default CRAN repository
+#' available_on_cran("semaforos", repos = "https://bisaloo.r-universe.dev")
+#'
 #' @export
 available_on_cran <- function(name, repos = default_cran_repos, ...) {
   cran_names <- rownames(available_packages(repos = repos, ...))
