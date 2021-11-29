@@ -8,8 +8,9 @@
 #' available_on_cran("semaforos")
 #'
 #' # Test if this name is available in a non-default CRAN repository
+#' \dontrun{
 #' available_on_cran("semaforos", repos = "https://bisaloo.r-universe.dev")
-#'
+#' }
 #' @export
 available_on_cran <- function(name, repos = default_cran_repos, ...) {
   cran_names <- rownames(available_packages(repos = repos, ...))

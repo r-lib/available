@@ -25,6 +25,7 @@ See if a name is available on CRAN
 available_on_cran("semaforos")
 
 # Test if this name is available in a non-default CRAN repository
+\dontrun{
 available_on_cran("semaforos", repos = "https://bisaloo.r-universe.dev")
-
+}
 }
