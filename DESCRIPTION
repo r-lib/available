@@ -31,9 +31,10 @@ Imports:
   udapi,
   yesno
 Suggests:
-  usethis,
-  BiocManager,
-  testthat
+    usethis,
+    BiocManager,
+    testthat,
+    covr
 URL: https://github.com/ropenscilabs/available
 BugReports: https://github.com/ropenscilabs/available/issues
 Roxygen: list(markdown = TRUE)

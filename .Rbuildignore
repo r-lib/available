@@ -8,3 +8,5 @@
 ^cran-comments\.md$
 ^script\.R$
 ^MAINTENANCE\.md$
+^codecov\.yml$
+^\.github$

@@ -12,9 +12,11 @@ knitr::opts_chunk$set(
 )
 ```
 
-[![Travis-CI Build Status](https://travis-ci.org/ropenscilabs/available.svg?branch=master)](https://travis-ci.org/ropenscilabs/available)
+<!-- badges: start -->
+[![R-CMD-check](https://github.com/ropenscilabs/available/workflows/R-CMD-check/badge.svg)](https://github.com/ropenscilabs/available/actions)
 [![CRAN status](http://www.r-pkg.org/badges/version/available)](https://cran.r-project.org/package=available)
-[![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
+<!-- badges: end -->
+
 <p align="center">
   <img src="http://i.imgur.com/1KZn3Z5.jpg" alt="xzibit">
 </p>
@@ -41,7 +43,7 @@ Or the development version from GitHub with:
 
 ```{r gh-installation, eval = FALSE}
 # install.packages("devtools")
-devtools::install_github("ropenscilabs/available")
+devtools::install_github("r-lib/available")
 ```
 
 ## Examples
