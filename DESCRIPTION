@@ -3,8 +3,8 @@ Title: Check if the Title of a Package is Available, Appropriate and Interesting
 Version: 1.0.4.9000
 Authors@R: c(
     person("Carl", "Ganz", role = c("aut")),
-    person("Gábor", "Csárdi", , "csardi.gabor@gmail.com", role = c("aut")),
-    person("Jim", "Hester", email = "james.f.hester@gmail.com", role = c("aut", "cre")),
+    person("Gábor", "Csárdi", , "csardi.gabor@gmail.com", role = c("aut", "cre")),
+    person("Jim", "Hester", role = "aut"),
     person("Molly", "Lewis", role = c("aut")),
     person("Rachael", "Tatman", role = c("aut"))
     )
