@@ -1,3 +1,5 @@
+# available (development version)
+
 # available 1.0.5
 
 * Gábor Csárdi is now the maintainer.
