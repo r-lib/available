@@ -24,9 +24,9 @@ jobs:
         with:
           use-public-rspm: true
 
-      - uses: r-lib/actions/setup-r-dependencies@v1
+      - uses: r-lib/actions/setup-r-dependencies@pak2
         with:
-          extra-packages: roxygen2
+          extra-packages: any::roxygen2
 
       - name: Document
         run: Rscript -e 'roxygen2::roxygenise()'
@@ -57,8 +57,9 @@ jobs:
 
       - uses: r-lib/actions/setup-r@v1
 
-      - name: Install dependencies
-        run: Rscript -e 'install.packages("styler")'
+      - uses: r-lib/actions/setup-r-dependencies@pak2
+        with:
+          extra-packages: any::styler
 
       - name: Style
         run: Rscript -e 'styler::style_pkg()'

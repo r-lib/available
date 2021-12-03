@@ -21,9 +21,10 @@ jobs:
         with:
           use-public-rspm: true
 
-      - uses: r-lib/actions/setup-r-dependencies@v1
+      - uses: r-lib/actions/setup-r-dependencies@pak2
         with:
-          extra-packages: covr
+          extra-packages: any::covr
+          needs: coverage
 
       - name: Test coverage
         run: covr::codecov()
