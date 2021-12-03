@@ -25,6 +25,8 @@ jobs:
           - {os: macOS-latest,   r: 'release'}
 
           - {os: windows-latest, r: 'release'}
+          - {os: windows-2022,   r: 'devel-ucrt'}
+
           # Use 3.6 to trigger usage of RTools35
           - {os: windows-latest, r: '3.6'}
 
@@ -51,8 +53,9 @@ jobs:
           http-user-agent: ${{ matrix.config.http-user-agent }}
           use-public-rspm: true
 
-      - uses: r-lib/actions/setup-r-dependencies@v1
+      - uses: r-lib/actions/setup-r-dependencies@pak2
         with:
-          extra-packages: rcmdcheck
+          extra-packages: any::rcmdcheck
+          needs: check
 
       - uses: r-lib/actions/check-r-package@v1
