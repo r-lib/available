@@ -22,7 +22,6 @@ Searches performed
 \item Valid package name
 \item Already taken on CRAN
 \item Positive or negative sentiment
-\item Urban Dictionary
 }
 }
 \examples{

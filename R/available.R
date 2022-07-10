@@ -4,7 +4,6 @@
 #' - Valid package name
 #' - Already taken on CRAN
 #' - Positive or negative sentiment
-#' - Urban Dictionary
 #' @param name Name of package to search
 #' @param browse Whether browser should be opened for all web links,
 #'        default = TRUE. Default can be changed by setting
@@ -38,12 +37,13 @@ available <- function(name, browse = getOption("available.browse", TRUE), ...) {
     available_on_github(name))
   terms <- name_to_search_terms(name)
 
-  urban_dictonary <- check_urban()
-
-  res <- c(res,
-    unlist(recursive = FALSE,
-      lapply(terms, check_online_terms, urban = urban_dictonary
-      )))
+  res <- c(
+    res,
+    unlist(
+      recursive = FALSE,
+      lapply(terms, check_online_terms)
+    )
+  )
   structure(res, class = "available_query", packagename = name,
             browse = browse)
 }
@@ -118,21 +118,10 @@ suggest <- function(path = ".",  field = c("Title", "Description"), text = NULL)
 
 
 
-check_online_terms <- function(term, urban = TRUE) {
+check_online_terms <- function(term) {
       compact(list(get_bad_words(term),
       get_abbreviation(term),
       get_wikipedia(term),
       get_wiktionary(term),
-      if (urban) get_urban_data(term),
       get_sentiment(term)))
-}
-
-
-check_urban <- function() {
-  if (!interactive()) {
-    return(TRUE)
-  }
-    cat("Urban Dictionary can contain potentially offensive results,\n  should they be included? [Y]es / [N]o:\n")
-    result <- tryCatch(scan("", what = "character", quiet = TRUE, nlines = 1), error = function(x) "N")
-    identical(toupper(result), "Y")
 }

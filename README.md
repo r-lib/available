@@ -19,8 +19,6 @@ status](http://www.r-pkg.org/badges/version/available)](https://cran.r-project.o
 
 -   Checks for validity
 -   Checks not already available on GitHub, CRAN and Bioconductor
--   Searches Urban Dictionary, Wiktionary and Wikipedia for unintended
-    meanings
 -   Can suggest possible names based on text in the package title or
     description.
 

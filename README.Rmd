@@ -28,7 +28,6 @@ knitr::opts_chunk$set(
 
 - Checks for validity
 - Checks not already available on GitHub, CRAN and Bioconductor
-- Searches Urban Dictionary, Wiktionary and Wikipedia for unintended meanings
 - Can suggest possible names based on text in the package title or description.
 
 ## Installation
