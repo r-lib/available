@@ -2,9 +2,9 @@
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 <!-- badges: start -->
 
-[![R-CMD-check](https://github.com/r-lib/available/workflows/R-CMD-check/badge.svg)](https://github.com/r-lib/available/actions)
 [![CRAN
 status](http://www.r-pkg.org/badges/version/available)](https://cran.r-project.org/package=available)
+[![R-CMD-check](https://github.com/r-lib/available/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/r-lib/available/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 <p align="center">
