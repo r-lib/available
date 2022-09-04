@@ -45,6 +45,9 @@ github_locations <- function(x) {
   if(!inherits(x, "available_github")) {
     stop("x is not an object of class 'available_github'.")
   }
+  if(isTRUE(x$available)) {
+    return(character())
+  }
   x$close[[1]][["pkg_location"]]
 }
 
