@@ -62,7 +62,12 @@ gh_pkg <- memoise::memoise(function(pkg) {
 #' @export
 
 format.available_github <- function(x, ...) {
-  paste0(crayon::bold("Available on GitHub: ", yes_no(x[[1]]), "\n"))
+  if(isTRUE(x[[1]])) {
+    report <- ""
+  } else {
+    report <- paste(nrow(x$close[[1]]), "repositories")
+  }
+  paste0(crayon::bold("Available on GitHub: ", yes_no(x[[1]]), report, "\n"))
 }
 
 #' @export
