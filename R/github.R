@@ -1,6 +1,17 @@
 #' See if a name is available on github
 #'
+#' @rdname available_on_github
+#' @name available_on_github
+#' @aliases github_locations
+#'
 #' @param name Name of package to search
+#' @param x An object from available_on_github()
+#' @examples
+#' x <- available_on_github("available")
+#' github_locations(x)
+NULL
+
+#' @rdname available_on_github
 #' @importFrom jsonlite fromJSON
 #' @export
 available_on_github <- function(name) {
@@ -26,6 +37,15 @@ available_on_github <- function(name) {
       available = TRUE,
       close = list()),
     class = "available_github")
+}
+
+#' @rdname available_on_github
+#' @export
+github_locations <- function(x) {
+  if(!inherits(x, "available_github")) {
+    stop("x is not an object of class 'available_github'.")
+  }
+  x$close[[1]][["pkg_location"]]
 }
 
 gh_pkg <- memoise::memoise(function(pkg) {
