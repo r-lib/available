@@ -1,0 +1,10 @@
+url: https://github.r-lib.io/available
+template:
+  bootstrap: 5
+
+  includes:
+    in_header: |
+      <script defer data-domain="github.r-lib.io/available,all.tidyverse.org" src="https://plausible.io/js/plausible.js"></script>  
+      
+development:
+  mode: auto

@@ -33,7 +33,8 @@ Suggests:
     BiocManager,
     testthat (>= 3.0.0),
     covr
-URL: https://github.com/r-lib/available
+URL: https://github.com/r-lib/available, https://available.r-lib.org
 BugReports: https://github.com/r-lib/available/issues
 Roxygen: list(markdown = TRUE)
 Config/testthat/edition: 3
+Config/Needs/website: tidyverse/tidytemplate
