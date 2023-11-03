@@ -42,8 +42,7 @@ install.packages("available")
 Or the development version from GitHub with:
 
 ```{r gh-installation, eval = FALSE}
-# install.packages("devtools")
-devtools::install_github("r-lib/available")
+pak::pak("r-lib/available")
 ```
 
 ## Examples

@@ -35,8 +35,7 @@ install.packages("available")
 Or the development version from GitHub with:
 
 ``` r
-# install.packages("devtools")
-devtools::install_github("r-lib/available")
+pak::pak("r-lib/available")
 ```
 
 ## Examples
