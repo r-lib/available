@@ -31,8 +31,9 @@ Imports:
 Suggests:
     usethis,
     BiocManager,
-    testthat,
+    testthat (>= 3.0.0),
     covr
 URL: https://github.com/r-lib/available
 BugReports: https://github.com/r-lib/available/issues
 Roxygen: list(markdown = TRUE)
+Config/testthat/edition: 3

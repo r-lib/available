@@ -1,5 +1,3 @@
-context("Load packages from GitHub")
-
 test_that("Can find ", {
   skip_on_cran()
 

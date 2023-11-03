@@ -1,5 +1,3 @@
-context("Check package name for bad words")
-
 test_that("Catches bad word", {
   skip_on_cran()
 

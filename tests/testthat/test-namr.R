@@ -1,5 +1,3 @@
-context("test-namr.R")
-
 describe("pick_word_from_title", {
   it("ignores common words", {
     expect_equal(pick_word_from_title("wrapper for the intro.js library"), "introjs")

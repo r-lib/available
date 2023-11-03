@@ -1,5 +1,3 @@
-context("Load packages from CRAN")
-
 test_that("Can find dplyr", {
   skip_on_cran()
 
