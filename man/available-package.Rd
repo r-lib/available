@@ -11,6 +11,7 @@ Check if a given package name is available to use. It checks the name's validity
 Useful links:
 \itemize{
   \item \url{https://github.com/r-lib/available}
+  \item \url{https://r-lib.github.io/available/}
   \item Report bugs at \url{https://github.com/r-lib/available/issues}
 }
 
@@ -24,6 +25,11 @@ Authors:
   \item Jim Hester
   \item Molly Lewis
   \item Rachael Tatman
+}
+
+Other contributors:
+\itemize{
+  \item Posit Software, PBC [copyright holder, funder]
 }
 
 }
