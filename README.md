@@ -5,6 +5,8 @@
 [![CRAN
 status](http://www.r-pkg.org/badges/version/available)](https://cran.r-project.org/package=available)
 [![R-CMD-check](https://github.com/r-lib/available/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/r-lib/available/actions/workflows/R-CMD-check.yaml)
+[![Codecov test
+coverage](https://codecov.io/gh/r-lib/available/branch/main/graph/badge.svg)](https://app.codecov.io/gh/r-lib/available?branch=main)
 <!-- badges: end -->
 
 <p align="center">
@@ -17,10 +19,10 @@ status](http://www.r-pkg.org/badges/version/available)](https://cran.r-project.o
 
 > available helps you name your R package.
 
--   Checks for validity
--   Checks not already available on GitHub, CRAN and Bioconductor
--   Can suggest possible names based on text in the package title or
-    description.
+- Checks for validity
+- Checks not already available on GitHub, CRAN and Bioconductor
+- Can suggest possible names based on text in the package title or
+  description.
 
 ## Installation
 
