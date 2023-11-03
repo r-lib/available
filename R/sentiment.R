@@ -24,7 +24,7 @@ format.available_sentiment <- function(x, ...) {
       "???"
     } else if (isTRUE(x[[1]])) {
       crayon::green("+++")
-    } else{
+    } else {
       crayon::red("---")
     },
     "\n"

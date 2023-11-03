@@ -46,7 +46,6 @@ print.available_bad_words <- function(x, ...) {
 }
 
 mark_bad_words <- function(text, marker = NULL) {
-
   if (is.null(marker)) {
     marker <- crayon::combine_styles(crayon::white, crayon::bgRed)
   }
@@ -62,7 +61,9 @@ mark_bad_words <- function(text, marker = NULL) {
 
 mark_bad_words1 <- function(text1, marker) {
   word_pos <- gregexpr("\\b\\w+\\b", text1)
-  if (length(word_pos[[1]]) == 1 && word_pos == -1) return(text1)
+  if (length(word_pos[[1]]) == 1 && word_pos == -1) {
+    return(text1)
+  }
   start <- c(word_pos[[1]])
   end <- start + attr(word_pos[[1]], "match.length") - 1
   words <- substring(text1, start, end)

@@ -21,5 +21,4 @@ pkg_name_dist <- function(name, pkgs) {
       distance = utils::head(distances[order(distances)])
     )
   }
-
 }

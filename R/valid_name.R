@@ -2,7 +2,6 @@
 #' @inheritParams available
 #' @export
 valid_package_name <- function(name) {
-
   # This is the algorithm used in R CMD check at
   # https://github.com/wch/r-source/blob/a3a73a730962fa214b4af0ded55b497fb5688b8b/src/library/tools/R/QC.R#L3214
   valid <- TRUE
@@ -30,4 +29,4 @@ print.available_valid_name <- function(x, ...) {
 }
 
 valid_package_name_regexp <-
-        .standard_regexps()$valid_package_name
+  .standard_regexps()$valid_package_name

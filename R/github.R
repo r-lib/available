@@ -24,8 +24,10 @@ available_on_github <- function(name) {
   structure(
     list(
       available = TRUE,
-      close = list()),
-    class = "available_github")
+      close = list()
+    ),
+    class = "available_github"
+  )
 }
 
 gh_pkg <- memoise::memoise(function(pkg) {
@@ -53,12 +55,14 @@ print.available_github <- function(x, ...) {
 }
 
 github_link_location <- function() {
-  tryCatch({
-    desc <- desc::desc()
-    urls <- desc$get_urls()
-    gh_links <- grep("^https?://github.com/", urls, value = TRUE)
+  tryCatch(
+    {
+      desc <- desc::desc()
+      urls <- desc$get_urls()
+      gh_links <- grep("^https?://github.com/", urls, value = TRUE)
 
-    gsub("https?://github.com/(.*)/?$", "\\1", gh_links)
-  },
-  error = function(e) character(0))
+      gsub("https?://github.com/(.*)/?$", "\\1", gh_links)
+    },
+    error = function(e) character(0)
+  )
 }

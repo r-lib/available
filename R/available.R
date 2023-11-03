@@ -31,10 +31,12 @@
 #' }
 #' @export
 available <- function(name, browse = getOption("available.browse", TRUE), ...) {
-  res <- list(valid_package_name(name),
+  res <- list(
+    valid_package_name(name),
     available_on_cran(name, ...),
     available_on_bioc(name, ...),
-    available_on_github(name))
+    available_on_github(name)
+  )
   terms <- name_to_search_terms(name)
 
   res <- c(
@@ -44,8 +46,10 @@ available <- function(name, browse = getOption("available.browse", TRUE), ...) {
       lapply(terms, check_online_terms)
     )
   )
-  structure(res, class = "available_query", packagename = name,
-            browse = browse)
+  structure(res,
+    class = "available_query", packagename = name,
+    browse = browse
+  )
 }
 
 #' @export
@@ -97,14 +101,18 @@ create <- function(name, ...) {
 #' }
 #'
 #' # Or by explicitly using the text argument
-#' suggest(text =
-#'   "A Package for Displaying Visual Scenes as They May Appear to an Animal with Lower Acuity")
-suggest <- function(path = ".",  field = c("Title", "Description"), text = NULL) {
+#' suggest(
+#'   text =
+#'     "A Package for Displaying Visual Scenes as They May Appear to an Animal with Lower Acuity"
+#' )
+suggest <- function(path = ".", field = c("Title", "Description"), text = NULL) {
   if (is.null(text)) {
-    if (file.exists (path)) {
+    if (file.exists(path)) {
       field <- match.arg(field)
-      text <- tryCatch(error = function (e) NA,
-        unname(desc::desc(path)$get(field)))
+      text <- tryCatch(
+        error = function(e) NA,
+        unname(desc::desc(path)$get(field))
+      )
     } else {
       text <- path
     }
@@ -119,9 +127,11 @@ suggest <- function(path = ".",  field = c("Title", "Description"), text = NULL)
 
 
 check_online_terms <- function(term) {
-      compact(list(get_bad_words(term),
-      get_abbreviation(term),
-      get_wikipedia(term),
-      get_wiktionary(term),
-      get_sentiment(term)))
+  compact(list(
+    get_bad_words(term),
+    get_abbreviation(term),
+    get_wikipedia(term),
+    get_wiktionary(term),
+    get_sentiment(term)
+  ))
 }
