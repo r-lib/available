@@ -1,3 +1,4 @@
+#' @aliases available-package NULL
 #' @keywords internal
 "_PACKAGE"
 
