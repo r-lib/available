@@ -1,6 +1,17 @@
 #' See if a name is available on github
 #'
+#' @rdname available_on_github
+#' @name available_on_github
+#' @aliases github_locations
+#'
 #' @param name Name of package to search
+#' @param x An object from available_on_github()
+#' @examples
+#' x <- available_on_github("available")
+#' github_locations(x)
+NULL
+
+#' @rdname available_on_github
 #' @importFrom jsonlite fromJSON
 #' @export
 available_on_github <- function(name) {
@@ -30,6 +41,18 @@ available_on_github <- function(name) {
   )
 }
 
+#' @rdname available_on_github
+#' @export
+github_locations <- function(x) {
+  if(!inherits(x, "available_github")) {
+    stop("x is not an object of class 'available_github'.")
+  }
+  if(isTRUE(x$available)) {
+    return(character())
+  }
+  x$close[[1]][["pkg_location"]]
+}
+
 gh_pkg <- memoise::memoise(function(pkg) {
   res <- jsonlite::fromJSON(paste0("http://rpkg-api.gepuro.net/rpkg?q=", pkg))
   if (length(res) == 0) {
@@ -44,7 +67,12 @@ gh_pkg <- memoise::memoise(function(pkg) {
 #' @export
 
 format.available_github <- function(x, ...) {
-  paste0(crayon::bold("Available on GitHub: ", yes_no(x[[1]]), "\n"))
+  if(isTRUE(x[[1]])) {
+    report <- ""
+  } else {
+    report <- paste(nrow(x$close[[1]]), "repositories")
+  }
+  paste0(crayon::bold("Available on GitHub: ", yes_no(x[[1]]), report, "\n"))
 }
 
 #' @export

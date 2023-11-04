@@ -2,13 +2,22 @@
 % Please edit documentation in R/github.R
 \name{available_on_github}
 \alias{available_on_github}
+\alias{github_locations}
 \title{See if a name is available on github}
 \usage{
 available_on_github(name)
+
+github_locations(x)
 }
 \arguments{
 \item{name}{Name of package to search}
+
+\item{x}{An object from available_on_github()}
 }
 \description{
 See if a name is available on github
+}
+\examples{
+x <- available_on_github("available")
+github_locations(x)
 }
