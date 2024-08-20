@@ -31,8 +31,7 @@ Imports:
     SnowballC,
     stringdist,
     tibble,
-    tidytext,
-    yesno
+    tidytext
 Suggests:
     BiocManager,
     covr,

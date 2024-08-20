@@ -73,8 +73,11 @@ print.available_query <- function(x, ...) {
 create <- function(name, ...) {
   print(available(name))
 
-  ans <- yesno::yesno(glue::glue("Create package `{name}`?"))
-  if (isTRUE(ans)) {
+  ans <- utils::menu(
+    choices = c("Yes", "No"),
+    title = cli::format_inline("Create package {.pkg {name}}?")
+  )
+  if (ans == 1) {
     if (!requireNamespace("usethis")) {
       stop("`usethis` must be installed to create a package", call. = FALSE)
     }
