@@ -26,13 +26,12 @@ Imports:
     glue,
     jsonlite,
     memoise,
+    rlang,
     SnowballC,
     stringdist,
-    tibble,
     tidytext
 Suggests:
     BiocManager,
-    covr,
     testthat (>= 3.0.0),
     usethis
 Config/Needs/website: tidyverse/tidytemplate

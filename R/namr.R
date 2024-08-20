@@ -72,7 +72,10 @@ pick_word_from_title <- function(title, verb = FALSE) {
 
   # make sure
   if (length(package_name) == 0) {
-    stop("Sorry, we couldn't make a good name from your tile. Try using more specific words in your description.")
+    cli::cli_abort(c(
+      x = "Sorry, we couldn't make a good name from your tile.",
+      i = "Try using more specific words in your description."
+    ))
   }
 
   package_name
@@ -170,7 +173,7 @@ find_acronym <- function(title) {
 
   # make sure we don't have a name with reduplication
   if (word %in% tolower(acronyms)) {
-    stop("Title is already acronym.")
+    cli::cli_abort("Title is already acronym.")
   }
 
   # return the first acronym from the title

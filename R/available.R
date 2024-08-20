@@ -78,9 +78,7 @@ create <- function(name, ...) {
     title = cli::format_inline("Create package {.pkg {name}}?")
   )
   if (ans == 1) {
-    if (!requireNamespace("usethis")) {
-      stop("`usethis` must be installed to create a package", call. = FALSE)
-    }
+    rlang::check_installed("usethis", "to create a package.")
     usethis::create_package(name, ...)
   }
 }
@@ -120,7 +118,7 @@ suggest <- function(path = ".", field = c("Title", "Description"), text = NULL) 
       text <- path
     }
     if (is.na(text)) {
-      stop("No text found, please specify one with `text`.", call. = FALSE)
+      cli::cli_abort("No text found, please specify one with `text`.", call = NULL)
     }
   }
 
