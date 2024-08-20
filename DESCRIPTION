@@ -22,8 +22,6 @@ Depends:
     R (>= 3.6)
 Imports:
     cli,
-    clisymbols,
-    crayon,
     desc,
     glue,
     jsonlite,

@@ -10,10 +10,9 @@ get_wikipedia <- function(name) {
 }
 
 #' @export
-
 format.available_wikipedia <- function(x, ...) {
   browseURL(x[[1]])
-  paste0(crayon::bold("Wikipedia: "), crayon::blue(x[[1L]]), "\n")
+  paste0(cli::style_bold("Wikipedia: "), cli::col_blue(x[[1L]]), "\n")
 }
 
 #' @export
@@ -34,7 +33,7 @@ get_wiktionary <- function(name) {
 #' @export
 format.available_wiktionary <- function(x, ...) {
   browseURL(x[[1]])
-  paste0(crayon::bold("Wiktionary: "), crayon::blue(x[[1L]]), "\n")
+  paste0(cli::style_bold("Wiktionary: "), cli::col_blue(x[[1L]]), "\n")
 }
 
 #' @export
@@ -53,7 +52,7 @@ get_abbreviation <- function(name) {
 #' @export
 print.available_abbreviation <- function(x) {
   browseURL(x[[1]])
-  cat(crayon::bold("Abbreviations: "), crayon::blue(x[[1L]]), "\n", sep = "")
+  cat(cli::style_bold("Abbreviations: "), cli::col_blue(x[[1L]]), "\n", sep = "")
 
   invisible(x)
 }

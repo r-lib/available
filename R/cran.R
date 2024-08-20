@@ -32,11 +32,10 @@ available_packages <- memoise::memoise(available.packages)
 
 #' @export
 format.available_cran <- function(x, ...) {
-  cat(crayon::bold("Available on CRAN:"), yes_no(x[[1]]), "\n")
+  cat(cli::style_bold("Available on CRAN: "), yes_no(x[[1]]), "\n")
 }
 
 #' @export
-
 print.available_cran <- function(x, ...) {
   cat(format(x, ...))
   invisible(x)

@@ -18,7 +18,7 @@ valid_package_name <- function(name) {
 #' @export
 
 format.available_valid_name <- function(x, ...) {
-  paste0(crayon::bold("Name valid: "), yes_no(x[[1]]), "\n")
+  paste0(cli::style_bold("Name valid: "), yes_no(x[[1]]), "\n")
 }
 
 #' @export

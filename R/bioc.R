@@ -21,7 +21,7 @@ available_on_bioc <- function(name, repos = NULL, ...) {
 #' @export
 
 format.available_bioc <- function(x, ...) {
-  paste0(crayon::bold("Available on Bioconductor: "), yes_no(x[[1]]), "\n")
+  paste0(cli::style_bold("Available on Bioconductor: "), yes_no(x[[1]]), "\n")
 }
 
 #' @export
