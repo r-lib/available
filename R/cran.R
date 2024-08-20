@@ -31,7 +31,6 @@ archive_packages <- memoise::memoise(function() {
 available_packages <- memoise::memoise(available.packages)
 
 #' @export
-
 format.available_cran <- function(x, ...) {
   cat(crayon::bold("Available on CRAN:"), yes_no(x[[1]]), "\n")
 }

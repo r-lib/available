@@ -17,7 +17,6 @@ format.available_wikipedia <- function(x, ...) {
 }
 
 #' @export
-
 print.available_wikipedia <- function(x, ...) {
   cat(format(x, ...))
   invisible(x)
@@ -33,14 +32,12 @@ get_wiktionary <- function(name) {
 }
 
 #' @export
-
 format.available_wiktionary <- function(x, ...) {
   browseURL(x[[1]])
   paste0(crayon::bold("Wiktionary: "), crayon::blue(x[[1L]]), "\n")
 }
 
 #' @export
-
 print.available_wiktionary <- function(x, ...) {
   cat(format(x))
   invisible(x)
@@ -53,6 +50,7 @@ get_abbreviation <- function(name) {
   structure(url, class = "available_abbreviation")
 }
 
+#' @export
 print.available_abbreviation <- function(x) {
   browseURL(x[[1]])
   cat(crayon::bold("Abbreviations: "), crayon::blue(x[[1L]]), "\n", sep = "")

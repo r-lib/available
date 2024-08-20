@@ -22,6 +22,7 @@ glue_collapse <- function(...) {
   }
 }
 
+#' @exportS3Method testthat::compare
 compare.glue <- function(x, y) {
   if (identical(class(y), "character")) {
     class(x) <- NULL
