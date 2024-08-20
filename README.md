@@ -3,14 +3,14 @@
 <!-- badges: start -->
 
 [![CRAN
-status](http://www.r-pkg.org/badges/version/available)](https://cran.r-project.org/package=available)
+status](https://www.r-pkg.org/badges/version/available)](https://CRAN.R-project.org/package=available)
 [![R-CMD-check](https://github.com/r-lib/available/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/r-lib/available/actions/workflows/R-CMD-check.yaml)
 [![Codecov test
-coverage](https://codecov.io/gh/r-lib/available/branch/main/graph/badge.svg)](https://app.codecov.io/gh/r-lib/available?branch=main)
+coverage](https://codecov.io/gh/r-lib/available/graph/badge.svg)](https://app.codecov.io/gh/r-lib/available)
 <!-- badges: end -->
 
 <p align="center">
-<img src="http://i.imgur.com/1KZn3Z5.jpg" alt="xzibit">
+<img src="https://i.imgur.com/1KZn3Z5.jpg" alt="xzibit">
 </p>
 
  
@@ -41,7 +41,7 @@ pak::pak("r-lib/available")
 ## Examples
 
 <p align="center">
-<img src="http://i.imgur.com/tA1VdaH.png">
+<img src="https://i.imgur.com/tA1VdaH.png">
 </p>
 
  

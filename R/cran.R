@@ -43,5 +43,5 @@ print.available_cran <- function(x, ...) {
 
 default_cran_repos <- c(
   CRAN = "https://cloud.r-project.org",
-  CRANextra = "http://www.stats.ox.ac.uk/pub/RWin"
+  CRANextra = "https://www.stats.ox.ac.uk/pub/RWin"
 )
