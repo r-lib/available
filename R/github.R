@@ -44,7 +44,7 @@ gh_pkg <- memoise::memoise(function(pkg) {
 #' @export
 
 format.available_github <- function(x, ...) {
-  paste0(crayon::bold("Available on GitHub: ", yes_no(x[[1]]), "\n"))
+  paste0(cli::style_bold("Available on GitHub: ", yes_no(x[[1]]), "\n"))
 }
 
 #' @export

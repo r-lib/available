@@ -19,13 +19,13 @@ get_sentiment <- function(name) {
 
 format.available_sentiment <- function(x, ...) {
   paste0(
-    crayon::bold("Sentiment:"),
+    cli::style_bold("Sentiment: "),
     if (is.na(x[[1]])) {
       "???"
     } else if (isTRUE(x[[1]])) {
-      crayon::green("+++")
+      cli::col_green("+++")
     } else {
-      crayon::red("---")
+      cli::col_red("---")
     },
     "\n"
   )

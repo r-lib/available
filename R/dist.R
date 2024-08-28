@@ -16,9 +16,10 @@ pkg_name_dist <- function(name, pkgs) {
   } else {
     distances <- stringdist::stringdist(name, pkgs)
 
-    tibble::tibble(
+    data.frame(
       pkgs = utils::head(pkgs[order(distances)]),
-      distance = utils::head(distances[order(distances)])
+      distance = utils::head(distances[order(distances)]),
+      stringsAsFactors = FALSE
     )
   }
 }

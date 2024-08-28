@@ -10,14 +10,12 @@ get_wikipedia <- function(name) {
 }
 
 #' @export
-
 format.available_wikipedia <- function(x, ...) {
   browseURL(x[[1]])
-  paste0(crayon::bold("Wikipedia: "), crayon::blue(x[[1L]]), "\n")
+  paste0(cli::style_bold("Wikipedia: "), cli::format_inline("{.url {x[[1L]]}}"), "\n")
 }
 
 #' @export
-
 print.available_wikipedia <- function(x, ...) {
   cat(format(x, ...))
   invisible(x)
@@ -33,14 +31,12 @@ get_wiktionary <- function(name) {
 }
 
 #' @export
-
 format.available_wiktionary <- function(x, ...) {
   browseURL(x[[1]])
-  paste0(crayon::bold("Wiktionary: "), crayon::blue(x[[1L]]), "\n")
+  paste0(cli::style_bold("Wiktionary: "), cli::format_inline("{.url {x[[1L]]}}"), "\n")
 }
 
 #' @export
-
 print.available_wiktionary <- function(x, ...) {
   cat(format(x))
   invisible(x)
@@ -48,14 +44,15 @@ print.available_wiktionary <- function(x, ...) {
 
 get_abbreviation <- function(name) {
   # TODO: handle case when we can't open browser
-  url <- paste0("http://www.abbreviations.com/", name)
+  url <- paste0("https://www.abbreviations.com/", name)
 
   structure(url, class = "available_abbreviation")
 }
 
-print.available_abbreviation <- function(x) {
+#' @export
+print.available_abbreviation <- function(x, ...) {
   browseURL(x[[1]])
-  cat(crayon::bold("Abbreviations: "), crayon::blue(x[[1L]]), "\n", sep = "")
+  cat(cli::style_bold("Abbreviations: "), cli::format_inline("{.url {x[[1L]]}}"), "\n", sep = "")
 
   invisible(x)
 }

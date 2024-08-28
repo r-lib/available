@@ -25,16 +25,15 @@ get_bad_words <- function(name) {
 #' @export
 
 format.available_bad_words <- function(x, ...) {
-  good <- crayon::green
-  bad <- crayon::combine_styles(crayon::bgRed, crayon::white)
-  paste0(
-    crayon::bold("Bad Words: "),
+  good <- cli::col_green
+  bad <- cli::combine_ansi_styles(cli::bg_red, cli::col_white)
+  cli::cat_line(
+    cli::style_bold("Bad Words: "),
     if (length(x) == 0) {
-      good(clisymbols::symbol$tick)
+      good(cli::symbol$tick)
     } else {
-      bad(glue_collapse(x, sep = ", ", last = " and "))
+      bad(cli::ansi_collapse(x))
     },
-    "\n"
   )
 }
 
@@ -47,7 +46,7 @@ print.available_bad_words <- function(x, ...) {
 
 mark_bad_words <- function(text, marker = NULL) {
   if (is.null(marker)) {
-    marker <- crayon::combine_styles(crayon::white, crayon::bgRed)
+    marker <- cli::combine_ansi_styles(cli::col_white, cli::bg_red)
   }
 
   vapply(

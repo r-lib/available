@@ -73,11 +73,12 @@ print.available_query <- function(x, ...) {
 create <- function(name, ...) {
   print(available(name))
 
-  ans <- yesno::yesno(glue::glue("Create package `{name}`?"))
-  if (isTRUE(ans)) {
-    if (!requireNamespace("usethis")) {
-      stop("`usethis` must be installed to create a package", call. = FALSE)
-    }
+  ans <- utils::menu(
+    choices = c("Yes", "No"),
+    title = cli::format_inline("Create package {.pkg {name}}?")
+  )
+  if (ans == 1) {
+    rlang::check_installed("usethis", "to create a package.")
     usethis::create_package(name, ...)
   }
 }
@@ -117,7 +118,7 @@ suggest <- function(path = ".", field = c("Title", "Description"), text = NULL) 
       text <- path
     }
     if (is.na(text)) {
-      stop("No text found, please specify one with `text`.", call. = FALSE)
+      cli::cli_abort("No text found, please specify one with `text`.", call = NULL)
     }
   }
 

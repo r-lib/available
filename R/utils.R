@@ -4,9 +4,9 @@
 
 yes_no <- function(x) {
   if (isTRUE(x)) {
-    crayon::green(clisymbols::symbol$tick)
+    cli::col_green(cli::symbol$tick)
   } else {
-    crayon::red(clisymbols::symbol$cross)
+    cli::col_red(cli::symbol$cross)
   }
 }
 
@@ -22,6 +22,7 @@ glue_collapse <- function(...) {
   }
 }
 
+#' @exportS3Method testthat::compare
 compare.glue <- function(x, y) {
   if (identical(class(y), "character")) {
     class(x) <- NULL
