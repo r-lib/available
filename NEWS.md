@@ -12,6 +12,7 @@
 * `get_wikipidia()` renamed to `get_wikipedia()`.
 
 * `valid_package_name()` now correctly checks a package name according to CRAN policy (@KevCaz, #61).
+* `available_on_github()` now uses the public GitHub API if the rpkg-api is down (@patrickvossler18, #69).
 
 # available 1.0.4
 
